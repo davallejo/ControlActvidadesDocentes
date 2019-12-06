@@ -1,0 +1,406 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        
+        <ui:composition template="../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <!--CABECERA-->
+
+                <!--CUEROPO-->
+                <div class="marco">
+                    <h4>PORTAL DE ADMINISTRADOR </h4>
+                    
+                    <h:form class="form-horizontal">
+<!--                        <div class="row">
+                            <div class="col-md-5">
+                                <ul class="list-group">
+                                    <li class="list-group-item" >IMPARTICIÓN DE CLASES </li>
+                                    <li class="list-group-item">INVESTIGACIÓN</li>
+                                    <li class="list-group-item" >VINCULACIÓN CON LA SOCIEDAD</li>
+                                    <li class="list-group-item">PREPARACIÓN DE CLASES</li>
+                                    <li class="list-group-item">PREPARACIÓN DE EXÁMENES</li>
+                                    <li class="list-group-item">TUTORÍAS ACADÉMICAS</li>
+                                    <li class="list-group-item">ACTIVIDADES DE TITULACIÓN</li>
+                                    <li class="list-group-item">TUTORÍAS DE PROYECTOS DE INVESTIGACIÓN</li>
+                                    <li class="list-group-item" >GESTIÓN ACADÉMICA</li>                  
+                                </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <ul class="list-group">
+                                    <li class="list-group-item" ><h:inputText  size="3" value="#{registro_User.confi.hic}" style="border: none"   /><h:inputText value="#{registro_User.confi.hic1}" style="border: none"   size="3" styleClass="pull-right" /></li>
+                                    <li class="list-group-item"><h:inputText size="3" value="#{registro_User.confi.hi}" style="border: none" /><h:inputText value="#{registro_User.confi.hi1}" style="border: none"    size="3" styleClass="pull-right" /> </li>
+                                    <li class="list-group-item" ><h:inputText size="3" value="#{registro_User.confi.hvs}" style="border: none" /><h:inputText value="#{registro_User.confi.hvs1}" style="border: none"    size="3" styleClass="pull-right" /> </li>
+                                    <li class="list-group-item"><h:inputText size="3" value="#{registro_User.confi.hpc}" style="border: none" /><h:inputText value="#{registro_User.confi.hpc1}" style="border: none"    size="3" styleClass="pull-right" /></li>
+                                    <li class="list-group-item"><h:inputText size="3" value="#{registro_User.confi.hpe}" style="border: none" /><h:inputText value="#{registro_User.confi.hpe1}" style="border: none"    size="3" styleClass="pull-right" /></li>
+                                    <li class="list-group-item"><h:inputText size="3" value="#{registro_User.confi.hta}" style="border: none" /><h:inputText value="#{registro_User.confi.hta1}" style="border: none"    size="3" styleClass="pull-right" /></li>
+                                    <li class="list-group-item"><h:inputText size="3" value="#{registro_User.confi.hat}" style="border: none" /><h:inputText value="#{registro_User.confi.hat1}" style="border: none"    size="3" styleClass="pull-right" /></li>
+                                    <li class="list-group-item"><h:inputText size="3" value="#{registro_User.confi.hat}" style="border: none"  /><h:inputText value="#{registro_User.confi.hat1}" style="border: none"   size="3" styleClass="pull-right" /></li>
+                                    <li class="list-group-item" ><h:inputText size="3" value="#{registro_User.confi.hga}"  style="border: none" /><h:inputText value="#{registro_User.confi.hga1}" style="border: none"   size="3" styleClass="pull-right" /></li>                  
+                                </ul>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <h:commandButton  action="#{registro_User.guardarConfiHoras()}" value="GUARDAR"  class="btn btn-default btn-block" />
+                                    
+                                    <h:commandButton action="portal-admin.xhtml"  value="CANCELAR" type="submit" class="btn btn-default btn-block" />
+                                </div>
+                            </div>
+                        </div>-->
+<!--
+                           <div class="row">
+                            <div class="col-md-6">
+                                <h4>CONFIGURACIÓN PERIODO</h4>
+                                <br/> 
+                                <p:dataList value="#{periodoController.items}" var="per" type="ordered">
+                                    <f:facet name="header">
+                                        LISTA DE PROYECTOS
+                                    </f:facet>
+                                          #{per.nombre}
+                                </p:dataList>
+
+                                <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.nombre_proyecto_seleccionado}">
+                                    <f:selectItems value="#{periodoController.items}" 
+                                                   var="peri"
+                                           itemValue="#{peri}"
+                                           itemLabel="#{peri.nombre}"/>
+                                </h:selectOneMenu>
+
+                                <h:commandButton  style="margin-top: 5px" value="ACTIVAR PERIODO" action="#{registro_User.activarPerido()}"  class="btn btn-default btn-block" />
+                            </div>                          
+                        </div>
+<br/>-->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>CONFIGURACIÓN PROYECTOS DE ADMINISTRACION</h4>
+                                <br/> 
+                                <p:dataList value="#{registro_User.proyectos}" var="pro" type="ordered">
+                                    <f:facet name="header">
+                                        LISTA DE PROYECTOS
+                                    </f:facet>
+                                          #{pro.nombre}
+                                </p:dataList>
+
+                                <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.nombre_proyecto_seleccionado}">
+                                    <f:selectItems value="#{registro_User.nombres_proyectos}" />
+                                </h:selectOneMenu>
+
+                                <h:commandButton  style="margin-top: 5px" value="ELIMINAR PROYECTO" action="#{registro_User.eliminarProyecto()}"  class="btn btn-default btn-block" />
+                            </div>
+                            <div class="col-md-6">
+                                <br/><br/><br/>
+                                <h5><strong>CREAR  PROYECTO</strong></h5>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Nombre:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="ingrese nombre proyecto" value="#{registro_User.nombre_proyecto}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >CI Tutor:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="ci tutor" value="#{registro_User.ci_tutor}" />
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Inicio:</label>
+                                    <div class="col-sm-10">
+                                        <th><p:calendar disabled="true"  styleClass="from-control"  value="#{registro_User.inicio_proyecto}"  locale="es" /></th>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Fin:</label>
+                                    <div class="col-sm-10">
+                                        <th><p:calendar   styleClass="from-control"  value="#{registro_User.fin_proyecto}"  locale="es" /></th>
+                                    </div>
+                                </div>
+<!--                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="peri">Periodo:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control" id="peri" pt:placeholder="ingrese periodo" value="#{registro_User.nombres}" />
+                                    </div>
+                                </div>-->
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="descri">Descripción:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputTextarea class="form-control" id="descri" pt:placeholder="descripción del proyecto" value="#{registro_User.descripcion_proyecto}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <h:commandButton action="#{registro_User.crearProyecto()}"  value="CREAR PROYECTO" type="submit" class="btn btn-default btn-block" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+            
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>CONFIGURACIÓN DE CARRERAS</h4>
+                                <br/> 
+                                <p:dataList value="#{registro_User.carreras}" var="carr" type="ordered">
+                                    <f:facet name="header">
+                                        LISTA DE CARRERAS
+                                    </f:facet>
+                                          #{carr.nombre}
+                                </p:dataList>
+                                
+                                <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.nombre_carrera_selecionada_a_borrar}">
+                                     <f:selectItems value="#{registro_User.nombres_carreras}" />
+                                </h:selectOneMenu>
+
+                                <h:commandButton  style="margin-top: 5px" value="ELIMINAR CARRERA" action="#{registro_User.borrarCarrera()}"  class="btn btn-default btn-block" />
+        
+                            </div>  
+                            <div class="col-md-6">
+                                <br/><br/><br/>
+                                <h5><strong>CREAR  CARRERA</strong></h5>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Nombre:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="ingrese nombre carrera" value="#{registro_User.nueva_carrera.nombre}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Mision:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="mision de la carrera" value="#{registro_User.nueva_carrera.mision}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Vision:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="vision de la carrera" value="#{registro_User.nueva_carrera.vision}" />
+                                    </div>
+                                </div>
+                               
+                                 <div class="form-group">
+                                    <label class="control-label col-sm-2" >Perfil Egreso:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="perfil de egreso  de la carrera" value="#{registro_User.nueva_carrera.perfilEgreso}" />
+                                    </div>
+                                </div>
+                                
+<!--                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="peri">Periodo:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control" id="peri" pt:placeholder="ingrese periodo" value="#{registro_User.nombres}" />
+                                    </div>
+                                </div>-->
+                   
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <h:commandButton action="#{registro_User.guardarCarrera()}"  value="CREAR CARRERA" type="submit" class="btn btn-default btn-block" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>CONFIGURACIÓN DE ASIGNATURAS</h4>
+                                <br/> 
+                                <p:dataList value="#{registro_User.materias}" var="pro" type="ordered">
+                                    <f:facet name="header">
+                                        LISTA DE ASIGNATURAS DISPONIBLES 
+                                    </f:facet>
+                                          #{pro.nombre}
+                                </p:dataList>
+
+                                <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.materia_selecionada}">
+                                    <f:selectItems value="#{registro_User.nombres_materias}" />
+                                </h:selectOneMenu>
+
+                                <h:commandButton style="margin-top: 5px"  value="ELIMINAR ASIGNATURA" action="#{registro_User.eliminarMateria()}" type="submit" class="btn btn-default btn-block" />
+                            </div>
+                            <div class="col-md-6">
+                                <br/><br/><br/>
+                                <h5><strong>CREAR  ASIGNATURA</strong></h5>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Nombre:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="ingrese nombre asignatura" value="#{registro_User.nueva_materia.nombre}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Codigo:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="código materia" value="#{registro_User.nueva_materia.codigo}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Creditos:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="creditos materia" value="#{registro_User.nueva_materia.creditos}" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Tipo Asignatura:</label>
+                                    <div class="col-sm-10">
+                                        <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.nueva_materia.tipoAsignatura}">
+                                            <f:selectItem itemValue="OBLIGATORIA" itemLabel="OBLIGATORIA" />
+                                            <f:selectItem itemValue="OPTATIVA" itemLabel="OPTATIVA" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Unidad Curricular:</label>
+                                    <div class="col-sm-10">
+                                        <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.nueva_materia.unidadCurricular}">
+                                            <f:selectItem itemValue="OBLIGATORIA" itemLabel="BASICA" />
+                                            <f:selectItem itemValue="OPTATIVA" itemLabel="PROFESIONAL" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                
+       
+<!--                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="peri">Periodo:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control" id="peri" pt:placeholder="ingrese periodo" value="#{registro_User.nombres}" />
+                                    </div>
+                                </div>-->
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Descripción:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputTextarea class="form-control"  pt:placeholder="descripción de la materia" value="#{registro_User.descripcion_proyecto}" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Objetivo General:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="objetivo general" value="#{registro_User.nueva_materia.objetivoGeneral}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Objetivos Especificos:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputTextarea class="form-control"  pt:placeholder="objetivos especificos" value="#{registro_User.nueva_materia.objetivosEspecificos}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Contibucion Formacion:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="contibucion formacion" value="#{registro_User.nueva_materia.contribucionFormacionProf}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Resultados Aprendizaje:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control"  pt:placeholder="resultados aprendizaje" value="#{registro_User.nueva_materia.resultadosAprendizaje}" />
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Area:</label>
+                                    <div class="col-sm-10">
+                                        <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.area_nombre_selecionado}">
+                                            <f:selectItems value="#{registro_User.areas_nombres}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="control-label col-sm-2" >Carrera:</label>
+                                    <div class="col-sm-10">
+                                        <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.nombre_carrera_selecionada}">
+                                            <f:selectItems value="#{registro_User.nombres_carreras}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Silabo:</label>
+                                    <div class="col-sm-10">
+                                        <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.nombre_silabo_selecionado}">
+                                            <f:selectItems value="#{registro_User.nombres_silabos}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                              
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" >Semestre:</label>
+                                    <div class="col-sm-10">
+                                        <h:selectOneMenu style="margin-top: 5px" class="form-control" value="#{registro_User.nombre_semestre_selecionado}">
+                                            <f:selectItem itemValue="1" itemLabel="PRIMERO" />
+                                            <f:selectItem itemValue="2" itemLabel="SEGUNDO" />
+                                            <f:selectItem itemValue="3" itemLabel="TERCERO" />
+                                            <f:selectItem itemValue="4" itemLabel="CUARTO" />
+                                            <f:selectItem itemValue="5" itemLabel="QUINTO" />
+                                            <f:selectItem itemValue="6" itemLabel="SEXTO" />
+                                            <f:selectItem itemValue="7" itemLabel="SEPTIMO" />
+                                            <f:selectItem itemValue="8" itemLabel="OCTAVO" />
+                                            <f:selectItem itemValue="9" itemLabel="NOVENO" />
+                                            <f:selectItem itemValue="10" itemLabel="DECIMO" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                              
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <h:commandButton action="#{registro_User.guardarAsignatura()}"  value="CREAR ASIGNATURA" type="submit" class="btn btn-default btn-block" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                
+                    </h:form> 
+
+                </div>
+
+
+
+                <!--PIE-->
+
+
+                <!--VENTANA MODAL-->
+                <button style="display: none" id="modal1" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <p class="text-justify text-primary">
+                                    LA CEDULA DEL DOCENTE TUTOR NO EXISTE EN EL SISTEMA 
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

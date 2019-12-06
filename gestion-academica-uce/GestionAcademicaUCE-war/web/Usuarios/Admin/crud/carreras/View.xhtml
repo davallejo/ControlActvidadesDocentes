@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CarrerasViewDlg" widgetVar="CarrerasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCarrerasTitle}">
+            <h:form id="CarrerasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{carrerasController.selected != null}">
+                        
+                        <h:outputText value="#{bundle.ViewCarrerasLabel_nombre}"/>
+                        <h:outputText value="#{carrerasController.selected.nombre}" title="#{bundle.ViewCarrerasTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewCarrerasLabel_mision}"/>
+                        <h:outputText value="#{carrerasController.selected.mision}" title="#{bundle.ViewCarrerasTitle_mision}"/>
+                        <h:outputText value="#{bundle.ViewCarrerasLabel_vision}"/>
+                        <h:outputText value="#{carrerasController.selected.vision}" title="#{bundle.ViewCarrerasTitle_vision}"/>
+                        <h:outputText value="#{bundle.ViewCarrerasLabel_perfilEgreso}"/>
+                        <h:outputText value="#{carrerasController.selected.perfilEgreso}" title="#{bundle.ViewCarrerasTitle_perfilEgreso}"/>
+                        <h:outputText value="Facultad"/>
+                        <h:outputText value="#{carrerasController.selected.codFacultad.nombre}" title="#{bundle.ViewCarrerasTitle_codFacultad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PF('CarrerasViewDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

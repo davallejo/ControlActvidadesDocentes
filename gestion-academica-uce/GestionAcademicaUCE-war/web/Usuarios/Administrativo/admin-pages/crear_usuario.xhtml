@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        
+        <ui:composition template="../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <h4>REGISTRAR DOCENTE</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>INDICACIONES:</h3>
+                            <ul style="list-style: none">
+                                <li>1.Llene la información solicitada</li>
+                                <li>2.Presionar siguiente</li>
+                                <li>3.Llenar la cantidad de horas</li>
+                                <li>4.Presionar guardar</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8">
+                            <h:form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="ci">Cédula:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control" id="ci" pt:placeholder="ingrese cedula de identidad" value="#{registro_User.ci}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="nombres">Nombres:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control" id="nombres" pt:placeholder="ingrese nombres" value="#{registro_User.nombres}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control" id="apellidos" pt:placeholder="ingrese cedula de apellidos" value="#{registro_User.apellidos}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="tel">Teléfono:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText class="form-control" id="tel" pt:placeholder="ingrese cedula de identidad" value="#{registro_User.tel}" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="correo">Email:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputText pt:type="email" class="form-control" id="correo" pt:placeholder="@uce.edu.ec" value="#{registro_User.correo}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pass">Contraseña:</label>
+                                    <div class="col-sm-10">
+                                        <h:inputSecret class="form-control" id="pass" pt:placeholder="ingrese correo electrónico" value="#{registro_User.pass}" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="tipo">Acceso:</label>
+                                    <div class="col-sm-4">
+                                        <p:dataTable id="check" var="rol" value="#{registro_User.roles}" selection="#{registro_User.roles_seleccionados}" rowKey="#{rol.id}">
+                                            <p:column selectionMode="multiple" style="width:35px;text-align:center"/>
+                                            <p:column headerText="ROLES">
+                                                <h:outputText style="width: 3px" value="#{rol.nombre}" />
+                                            </p:column>
+                                        </p:dataTable>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p:dataTable id="check1" var="per" value="#{registro_User.perfiles}" selection="#{registro_User.perfiles_seleccionados}" rowKey="#{per.id}">
+                                            <p:column selectionMode="multiple" style="width:0px;text-align:center"/>
+                                            <p:column headerText="PERFILES">
+                                                <h:outputText style="width: 3px" value="#{registro_User.nombrarPerfil(per.nombre)}" />
+                                            </p:column>
+                                        </p:dataTable>
+                                    </div>
+                                </div>
+                              
+                                
+                              
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <h:commandButton  action="#{registro_User.insertarHoras()}" value="SIGUIENTE" type="submit" class="btn btn-default btn-block" />
+                                    </div>
+                                </div>
+                            </h:form> 
+                        </div>
+                    </div>
+                </div>
+
+                <!--VENTANA ERROR-->
+                <button  id="modal1" style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    POR FAVOR LLENE LOS DATOS Y SELECCIONE SUS ROLES 
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--VENTANA  CEDULA ERROR-->
+                <button  id="modal2" style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Open Modal</button>
+                <div id="myModal2" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    LA CEDULA INGRESADA NO ES VALIDA
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <button  id="modal3" style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Open Modal</button>
+                <div id="myModal3" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    USUARIO YA ESTA REGISTRADO
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                
+                <button  id="modal6" style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal6">Open Modal</button>
+                <div id="myModal6" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    NO PUEDE SELECCIONAR ROL DOCENTE Y ESTUDIANTE A LA VEZ
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                
+                <button  id="modal7" style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal7">Open Modal</button>
+                <div id="myModal7" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    NECESITA SELECCIONAR UN PERFIL
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                
+                <button  id="modal8" style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal8">Open Modal</button>
+                <div id="myModal8" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    UN USUARIO CON EL ROL ESTUDIANTE NO PUEDE TENER MAS ROLES
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

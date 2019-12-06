@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    
+    
+    
+    <h:head>                     
+       
+        <!--GRUPO4  funcion--> 
+        <script type="text/javascript">
+            function muestraImg() {
+                var contenedor = document.getElementById("muestrasImg");
+                var archivos = document.getElementById("cargarImg").files;
+                for (i = 0; i &lt; archivos.length; i++) {
+                    imgTag = document.createElement("img");
+                    imgTag.height = 200;//ESTAS LINEAS NO SON "NECESARIAS" 
+                    imgTag.width = 400; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN 
+                    imgTag.id = i;      // ORDENADAS CON UN TAMAÑO ESTÁNDAR
+                    imgTag.src = URL.createObjectURL(archivos[i]);
+                    contenedor.appendChild(imgTag);
+                }
+            }
+        </script>
+        <!--GRUPO4--> 
+
+
+
+
+
+
+
+
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+        <h:outputStylesheet library="css" name="estilos.css"/>
+        <h:outputStylesheet library="css" name="default.css"/>
+        <!--        <h:outputStylesheet library="css" name="cssLayout.css"/>-->
+        <h:outputStylesheet library="css" name="bootstrap-theme.min.css"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+
+        <!--        <h:outputScript library="js" name="jquery.min.js"/>-->
+        <h:outputScript library="js" name="bootstrap.min.js"/>        
+        <h:outputScript library="js" name="npm.js"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+
+        <title>UCE - FACULTAD DE ADMINISTRACION</title>
+        <f:event type="preRenderView" listener="#{login.verificarSesion()}"/>        
+        
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <div class="marco2">
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <h:graphicImage library="imagenes" name="logo-uce.png" class="img-logo" />                            
+                        </div>
+
+
+                        <div class="col-md-8">
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-12">
+
+
+                                    <!--GRUPO4  print-only --> 
+                                    <h1 class="print-only">UNIVERSIDAD CENTRAL DEL ECUADOR</h1>
+                                    <!--GRUPO4 --> 
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <!--GRUPO4 print-only--> 
+                                    <div class="print-only">
+
+                                        <p class="titulo">FACULTAD DE ADMINISTRACIÓN<br/> 
+                                            SISTEMA DE GESTIÓN ACADÉMICA</p> 
+                                    </div>     
+                                    <!--GRUPO4 --> 
+
+
+                                </div>     
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTENIDO PARA EL USUARIO -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="hr"></div>
+
+                            <div class="pull-left">
+                                <a style="color: white" href="javascript:history.back()">REGRESAR</a>
+                            </div>
+
+                            <div class="pull-right">
+                                <h:form>                                    
+                                    <!--                                    <div class="col-md-4">-->
+                                    <b:icon name="user" />  #{login.usuario.apellidoP} #{login.usuario.nombreP}  
+                                    <b:commandButton actionListener="#{login.cerrarSession()}" iconAwesome="fa-power-off"  action="/index?faces-redirect=true" look="danger"/>
+                                    <!--                                    </div>-->
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>                   
+
+                </div>
+
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content" >
+            <ui:insert name="content">
+                <div class="marco">
+                    Content
+                </div>
+            </ui:insert>
+        </div>
+
+        <div>
+            <ui:insert name="bottom">
+                <footer >
+
+
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="hr"></div>
+                            <p class="text-center" style="font-size: 15px" >© 2019 Universidad Central del Ecuador</p>
+                        </div>
+                    </div>    
+
+
+                </footer>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

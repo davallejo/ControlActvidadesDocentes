@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--                    <h:form>
+                                            <h5>USUARIO:  <h:outputLabel value="#{login.usuario.apellidoP} #{login.usuario.nombreP}"/></h5>
+                                        </h:form>-->
+
+                    <h1>OPCIONES DE DIRECTOR(A)</h1>
+                    <h4>¿QUE DESEA REALIZAR?</h4>
+                    <div class="row">
+                        <div class="col-md-6">  
+                            <h3>ATENCIÓN </h3>
+                            <p>USTED ES UN DIRECTOR(A), ESTAS SON SUS TAREAS </p>
+
+                            <h4>INDICACIONES:</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item">1.ELEGIR LA INFORMACIÓN QUE DESEA LLENAR.</li>
+                                <li class="list-group-item">2.LLENAR INFORMACIÓN.</li> 
+                                <li class="list-group-item">3.DAR GUARDAR.</li>
+                                <li class="list-group-item">4.VOLVER Y LLENAR OTRA ENTRADA O SALIR.</li> 
+                            </ul>
+                        </div>
+                        <div class="col-md-5">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <p:button  outcome="asignar_coordinador_area" styleClass="btn btn-default btn-block" value="ASIGNAR COORDINADOR DE ÁREA"/>
+                            <p:button  outcome="asignar_coordinador_asignatura" styleClass="btn btn-default btn-block " value="ASIGNAR COORDINADOR DE ASIGNATURA"/>
+                            <p:button  outcome="solicitudAr"   styleClass="btn btn-default btn-block " value="SOLICITAR INFORME"/>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

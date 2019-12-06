@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <div class="row">
+                        <h1>SEGUIMIENTO DE SILABO - MODULO 3</h1>
+
+                        <b:form id="segSilbDc" horizontal="true">
+                            <!-- OPCIONES SILABO -->
+                            <h3>Seleccione la materia que desea consultar</h3>
+                            <b:formGroup id="opSelectDc"> 
+                                 <!--<b:inputText value="" placeholder="java.util.List" typeahead="true" typeahead-values="#" tiny-screen="full-width" /> -->
+                                 <b:selectOneMenu id="slt" value="#{segSilaboDirC.docente}" colMd="4" label="Docente:" labelColMd="2">
+                                     <f:selectItem itemValue="#{null}" itemLabel="-- select --" />
+                                     <f:selectItems value="#{segSilaboDirC.listaDocentes}" var="docente"
+                                                   itemValue="#{docente.id}" itemLabel="#{docente.apellidoP} #{docente.nombreP}"/>
+                                     <f:ajax listener="#{segSilaboDirC.listarCursosDocente()}" render="cursosDct" />
+                                </b:selectOneMenu>                                  
+                                <b:selectOneMenu id="cursosDct" value="#{segSilaboDirC.curso}" colMd="4" label="Materia:" labelColMd="2">                                    
+                                    <f:selectItems value="#{segSilaboDirC.cursosDisponibles}" var="list" 
+                                                   itemValue="#{list.id}" itemLabel="#{list.codAsignatura.nombre}"/>
+                                </b:selectOneMenu>                                   
+                            </b:formGroup>
+                            
+                            <b:formGroup id="opDef">
+                                <b:inputText id="txcurso" value="#{segSilaboDirC.curso.nomenclatura}" disabled="true" colMd="4" label="Curso:" labelColMd="2" />
+                                <b:inputText id="txparalelo" value="#{segSilaboDirC.curso.codParalelo.nombre}" disabled="true" colMd="4" label="Paralelo:" labelColMd="2" />
+                            </b:formGroup>
+
+                            <b:commandButton value="Mostrar Temas" onclick="segSilbDcLtsSlbDcWidget.DataTable().destroy();ajax:segSilaboDirC.listarTemasReg();" ajax="true" update="opDef lstCont"/>
+                            
+                            <!-- LISTA DE TEMAS REGISTRADOS  -->
+                            <h3>Listado de los temas impartidos</h3>
+                            <b:formGroup id="lstCont">
+                                
+                                <b:dataTable id="ltsSlbDc" var="item" value="#{segSilaboDirC.ssTratados}" class="editableCarTable" 
+                                             excel="true" csv="true" pdf="true"   >
+                                    <b:dataTableColumn value="#{item.codUnidad.numeral}.#{item.codContenido.NItem}" label="ITEM" order="asc"/>  
+                                    <b:dataTableColumn value="#{item.codUnidad.nombre}" label="UNIDAD" orderable="false" />
+                                    <b:dataTableColumn value="#{item.codContenido.descripcion}" label="CONTENIDO" orderable="false" />
+                                    
+                                    <b:dataTableColumn label="HORA INICIAL" orderable="false" data-type="time">
+                                        <h:outputText value="#{item.horaInicio}">
+                                            <f:convertDateTime pattern="HH:mm:ss" timeZone="America/Guayaquil" />
+                                        </h:outputText>
+                                    </b:dataTableColumn>            
+                                    <b:dataTableColumn label="HORA FINAL" orderable="false">
+                                        <h:outputText value="#{item.horaFin}">
+                                            <f:convertDateTime pattern="HH:mm:ss" timeZone="America/Guayaquil"/>
+                                        </h:outputText>
+                                    </b:dataTableColumn>
+                                    
+                                    <b:dataTableColumn value="#{item.estadoContenido}" label="ESTADO" orderable="false" />                                       
+                                    
+                                    <b:dataTableColumn  label="CHECK EST." orderable="false" >
+                                        <b:selectBooleanCheckbox  value="#{item.confirmacionEstudiante}" disabled="true" col-md="10"/>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn value="#{item.observacionesEstudiante}" label="OBSERVACIONES EST." orderable="false" />
+                                    
+                                </b:dataTable>
+                                
+                            </b:formGroup>
+
+                        </b:form>
+
+
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>

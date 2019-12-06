@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <div class="row">
+                        <h1>SEGUIMIENTO DE SILABO POR PARTE DE LOS ESTUDIANTES</h1>
+
+                        <b:form id="segSilbEs" horizontal="true">
+                            <!-- OPCIONES SILABO -->
+                            <h3>Seleccione la materia que desea validar</h3>
+                            <b:formGroup id="opSelectEs"> 
+
+                                <b:selectOneMenu value="#{segSilaboEst.curso}" colMd="4" label="Materia:" labelColMd="2">                                    
+                                    <f:selectItems value="#{segSilaboEst.cursosEstudiante}" var="list" 
+                                                   itemValue="#{list.id}" itemLabel="#{list.codAsignatura.nombre}"/>
+                                </b:selectOneMenu>
+
+<!--                                <b:selectOneMenu value="#{seguimientoSilabos.aula}" colMd="4" label="Aula:" labelColMd="2">
+                                    <f:selectItems value="#{aulaController.items}" var="aulas" 
+                                                   itemValue="#{aulas.id}" itemLabel="#{aulas.nomenclatura}"/>
+                                </b:selectOneMenu>    -->
+                            </b:formGroup>
+                            <b:formGroup id="opDefEs">
+                                <b:inputText id="txcursoEs" value="#{segSilaboEst.curso.nomenclatura}" disabled="true" colMd="4" label="Curso:" labelColMd="2" />
+                                <b:inputText id="txDocenteEs" value="#{segSilaboEst.curso.codDocente.nombreP} #{segSilaboEst.curso.codDocente.apellidoP}" disabled="true" colMd="4" label="Docente:" labelColMd="2" />
+                                <b:inputText id="txparaleloEs" value="#{segSilaboEst.curso.codParalelo.nombre}" disabled="true" colMd="4" label="Paralelo:" labelColMd="2" />
+<!--                                <b:inputText id="txAulaEs" value="#{segSilaboEst.curso.codParalelo.nombre}" disabled="true" colMd="4" label="Aula:" labelColMd="2" />-->
+                            </b:formGroup>
+
+                            <b:commandButton value="Mostrar Silabo" onclick="segSilbEsLtsSlbEsWidget.DataTable().destroy();ajax:segSilaboEst.motrarSilabo();" ajax="true" update="opDefEs lstContEs"/>
+
+                            <!-- SILABO  -->
+                            <h3>En la tabla siguiente seleccione el tema tratado</h3>
+                            <b:formGroup id="lstContEs">
+
+<!--                                <b:label value="#{segSilaboEst.curso.horario}"/>-->
+
+                                <b:dataTable id="ltsSlbEs" var="item" value="#{segSilaboEst.listSegSilabo}" class="editableCarTable" 
+                                             excel="true" csv="true" pdf="true"   >
+                                    <b:dataTableColumn value="#{item.codUnidad.numeral}.#{item.codContenido.NItem}" label="ITEM" order="asc"/>  
+                                    <b:dataTableColumn value="#{item.codUnidad.nombre}" label="UNIDAD" orderable="false" />
+                                    <b:dataTableColumn value="#{item.codContenido.descripcion}" label="CONTENIDO" orderable="false" />
+                                    
+                                    <b:dataTableColumn label="HORA INICIAL" orderable="false" data-type="time">
+                                        <h:outputText value="#{item.horaInicio}">
+                                            <f:convertDateTime pattern="HH:mm:ss" timeZone="America/Guayaquil" />
+                                        </h:outputText>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn label="HORA FINAL" orderable="false" >
+                                        <h:outputText value="#{item.horaFin}">
+                                            <f:convertDateTime pattern="HH:mm:ss" timeZone="America/Guayaquil"/>
+                                        </h:outputText>
+                                    </b:dataTableColumn>
+                                    
+                                    <b:dataTableColumn value="#{item.estadoContenido}" label="ESTADO" orderable="false" />
+
+                                    <b:dataTableColumn label="OPCION" orderable="false" >
+                                        <b:commandButton onclick="ajax:segSilaboEst.selectSegSilabo(item);" oncomplete="$('.modal-example').modal('show');" update="segSilbEs:MymodalEs" value="Registrar" look="success" style="width:80px"/>
+                                    </b:dataTableColumn>
+                                </b:dataTable>
+
+                            </b:formGroup>
+
+                            <!-- Modal para las resto de opciones al registrar tema tratado -->
+                            <b:modal id="MymodalEs" class="modal-example" title="Datos Complementarios">
+<!--                                <b:form>-->
+                                    <h3><b>TEMA a Validar:</b></h3><h5>#{segSilaboEst.segSilabo.codContenido.descripcion}<hr/></h5>
+                                    <b:panelGrid columns="1" >                              
+
+                                        <b:switch value="#{segSilaboEst.confirmacionEstudiante}" label="Tema tratado?" offColor="success" onColor="info" offText="NO" onText="SI" col-md="4" />
+                                        <b:inputTextarea colMd="8" labelColMd="4" label="Observaciones:" placeholder="Escriba algunas observaciones respecto a la clase..." value="#{segSilaboEst.observacionesEstudiante}" />
+                                    </b:panelGrid>
+                                    <f:facet name="footer">
+                                        <b:button value="Cancelar" look="danger" dismiss="modal" onclick="return false;" />
+                                        <b:commandButton value="Guardar" look="primary" onclick="segSilbEsLtsSlbEsWidget.DataTable().destroy();ajax:segSilaboEst.validarSegSilabo();" update="lstContEs" ajax="true"/>
+                                        <b:button value="Cerrar" look="success" dismiss="modal"/>
+
+<!--                                        <b:commandButton value="OK" look="primary" dismiss="modal" onclick="segSilbEsLtsSlbEsWidget.DataTable().destroy();ajax:seguimientoSilabos.guardSilabo();" ajax="true" update="lstCont"/>-->
+                                    </f:facet>
+<!--                                </b:form>-->
+                            </b:modal>
+
+                        </b:form>
+
+
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>

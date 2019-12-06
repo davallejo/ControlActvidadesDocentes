@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>REGISTRE LA INFORMACIÓN DEL SEMESTRE</h4>
+
+                        <h:form>
+
+                            <p:fieldset>
+                                <div>
+                                    <table class="table table-responsive">
+                                        <thead>
+
+                                            <tr>
+
+                                                <th><p:outputLabel for="Periodo" value="SEMESTRE:"/></th>
+
+                                                <th>
+                                                    <p:selectOneMenu id="Periodo" value="#{managedBeanTablas.nombreSemestreTablas}" required="true" >  
+                                                        <f:selectItem itemLabel="--Selecciones--" itemValue="" />
+                                                        <f:selectItem itemLabel="Primero" itemValue="Primero" />
+                                                        <f:selectItem itemLabel="Segundo" itemValue="Segundo" />
+                                                        <f:selectItem itemLabel="Tercero" itemValue="Tercero" />
+                                                        <f:selectItem itemLabel="Cuarto" itemValue="Cuarto" />
+                                                        <f:selectItem itemLabel="Quinto" itemValue="Quinto" />
+                                                        <f:selectItem itemLabel="Sexto" itemValue="Sexto" />
+                                                        <f:selectItem itemLabel="Séptimo" itemValue="Séptimo" />
+                                                        <f:selectItem itemLabel="Octavo" itemValue="Octavo" />
+                                                        <f:selectItem itemLabel="Noveno" itemValue="Noveno" />
+                                                        <f:selectItem itemLabel="Décimo" itemValue="Décimo" />
+                                                    </p:selectOneMenu>
+                                                </th>
+                                                <p:messages for="Periodo" autoUpdate="true"/>
+                                            </tr>
+                                            <tr>
+                                                <p:dataList value="#{managedBeanView.cursoLt}" var="semestre" type="ordered">
+                                                    <f:facet name="header">
+                                                        Semestres Ingresados
+                                                    </f:facet>
+                                                    #{semestre.nombre}
+                                                </p:dataList>
+                                            </tr>    
+
+                                        </thead>
+                                    </table>  
+                                </div>
+
+                                <table class="table table-responsive">
+                                    <thead>
+
+                                        <tr>
+                                            <th> 
+                                                <h:commandButton styleClass="btn btn-info btn-block"  actionListener="#{managedBeanTablas.guardarSemestre()}" action="registroSemestreRedireccion?faces-redirect=true" value="GUARDAR DATOS"/>
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                </table>  
+
+                            </p:fieldset> 
+                        </h:form>           
+
+                        <div>
+                            <p:commandLink action="opcionesCASM3?faces-redirect=true">
+                                <h:outputText value="OPCIONES COORDINADOR" />
+                            </p:commandLink>
+                        </div>
+
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

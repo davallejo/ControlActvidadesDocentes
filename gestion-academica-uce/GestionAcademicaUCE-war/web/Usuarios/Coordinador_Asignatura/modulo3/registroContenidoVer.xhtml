@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>CONTENIDO</h4>
+
+                        <h:form>
+                            <p:fieldset>
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel  value="Nº DEL CONTENIDO:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.contenidoObjetoMostrar.NItem}</h5></th>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <th><p:outputLabel  value="NOMBRE:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.contenidoObjetoMostrar.descripcion}</h5></th>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel  value="ACTIVIDADES DE TRABAJO AUTÓNOMO, INVESTIGACIÓN Y VINCULACIÓN CON LA SOCIEDAD:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.contenidoObjetoMostrar.actividades}</h5></th>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel  value="MECANISMO DE EVALUACIÓN:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.contenidoObjetoMostrar.mecanismosEval}</h5> </th>
+                                        
+                                    </tr>
+                                </table>
+
+                                <div class="row" style="margin-top: 70px">
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"   action="verContenidoVer?faces-redirect=true" value="VER OTRO CONTENIDO"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"  action="listarUnidadesVerVer?faces-redirect=true" value="VER OTRA UNIDAD"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"   action="opcionesCASM3?faces-redirect=true" value="FINALIZAR"/>
+                                    </div>
+                                </div>
+
+
+                            </p:fieldset> 
+                        </h:form>           
+
+
+
+
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

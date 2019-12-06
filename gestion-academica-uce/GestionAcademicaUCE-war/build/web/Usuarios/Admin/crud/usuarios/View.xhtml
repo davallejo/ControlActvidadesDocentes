@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuariosViewDlg" widgetVar="UsuariosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUsuariosTitle}">
+            <h:form id="UsuariosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{usuariosController.selected != null}">
+                        <h:outputText value="CI."/>
+                        <h:outputText value="#{usuariosController.selected.id}" title="#{bundle.ViewUsuariosTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_userName}"/>
+                        <h:outputText value="#{usuariosController.selected.userName}" title="#{bundle.ViewUsuariosTitle_userName}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_userPass}"/>
+                        <h:outputText value="#{usuariosController.selected.userPass}" title="#{bundle.ViewUsuariosTitle_userPass}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_nombreP}"/>
+                        <h:outputText value="#{usuariosController.selected.nombreP}" title="#{bundle.ViewUsuariosTitle_nombreP}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_nombreS}"/>
+                        <h:outputText value="#{usuariosController.selected.nombreS}" title="#{bundle.ViewUsuariosTitle_nombreS}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_apellidoP}"/>
+                        <h:outputText value="#{usuariosController.selected.apellidoP}" title="#{bundle.ViewUsuariosTitle_apellidoP}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_apellidoM}"/>
+                        <h:outputText value="#{usuariosController.selected.apellidoM}" title="#{bundle.ViewUsuariosTitle_apellidoM}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_correoInst}"/>
+                        <h:outputText value="#{usuariosController.selected.correoInst}" title="#{bundle.ViewUsuariosTitle_correoInst}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_correoPers}"/>
+                        <h:outputText value="#{usuariosController.selected.correoPers}" title="#{bundle.ViewUsuariosTitle_correoPers}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_telefono}"/>
+                        <h:outputText value="#{usuariosController.selected.telefono}" title="#{bundle.ViewUsuariosTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewUsuariosLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{usuariosController.selected.estado}" disabled="true"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PF('UsuariosViewDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

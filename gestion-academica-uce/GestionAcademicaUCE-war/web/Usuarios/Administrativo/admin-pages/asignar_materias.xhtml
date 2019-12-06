@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body onload="nobackbutton();">
+
+        <ui:composition template="../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <div class="marco">
+                    <h4>ASIGNAR MATERIAS DE DOCENTE</h4>
+                    <h5 class="text-info" >Asignar materias a : <strong> #{registro_User.usuario.apellidoP} #{registro_User.usuario.nombreP} </strong> </h5> 
+                    <h:form>
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <p:dataTable id="check5" var="mat3" value="#{registro_User.asignaturas_de_docente}" selection="#{registro_User.asignaturas_de_docente_seleccionada}" rowKey="#{mat3.id}">
+                                    <p:column selectionMode="multiple" style="width:0px;text-align:center"/>
+                                    <p:column headerText="ASIGNATURAS DEL DOCENTE">
+                                        <h:outputText style="width: 3px" value="#{mat3.codAsignatura.nombre}" />
+                                    </p:column>
+                                </p:dataTable>
+
+                                <h:commandButton style="margin-top: 5px" class="btn btn-danger "  action="#{registro_User.eliminarMateriaDocente()}" value="ELIMINAR ASIGNATURA" />
+                                <br/>
+                                <br/>
+                            </div>
+                            <div class="col-md-5">
+                                <p:dataTable id="check" var="mat" value="#{registro_User.materias}" selection="#{registro_User.materias_seleccionadas}" rowKey="#{mat.id}">
+                                    <p:column selectionMode="multiple" style="width:0px;text-align:center"/>
+                                    <p:column headerText="ASIGNATURA DISPONIBLES" >
+                                        <h:outputText style="width: 3px" value="#{mat.nombre}" />
+                                    </p:column>
+                                </p:dataTable>
+                                <br/>
+                            </div>
+                            <div class="col-md-2">
+                                <p:dataTable disabledSelection="#{registro_User.no_materias_escoger}" id="check1" var="par" value="#{registro_User.paralelos}"  disabledTextSelection="true" selection="#{registro_User.paralelos_seleccionados}" rowKey="#{par.id}">
+                                    <p:column selectionMode="multiple" style="width:0px;text-align:center"/>
+                                    <p:column   headerText="PARALELOS">
+                                        <h:outputText   style="width: 3px" value="#{par.nombre}" />
+                                    </p:column>
+                                </p:dataTable>
+                                <br/>
+                            </div>
+                        </div> 
+
+
+
+
+
+
+<!--                        <p:dataTable  disabledSelection="#{registro_User.no_materias_escoger}" id="check2" var="per" value="#{registro_User.periodos}" selection="#{registro_User.periodos_seleccinados}" rowKey="#{per.id}">
+    <p:column selectionMode="multiple" style="width:0px;text-align:center"/>
+    <p:column headerText="PERIODOS">
+        <h:outputText style="width: 3px" value="#{per.anioInicio} - #{per.anioFin} " />
+    </p:column>
+</p:dataTable>-->
+
+                        <h:commandButton style="margin-top: 5px" class="btn btn-success btn-block" action="#{registro_User.actualizarUsuarioMaterias()}" value="ASIGNAR" />
+                    </h:form>
+                </div>
+                <!--VENTANA MODAL-->
+                <button style="display: none" id="modal1" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    SELECCIONE MATERIA Y PARALELO
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                
+                
+                <!--VENTANA MODAL-->
+                <button style="display: none" id="modal2" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Open Modal</button>
+
+                <!-- Modal -->
+                <div id="myModal2" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    SELECCIONE MATERIA A ELIMINAR
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+
+</html>

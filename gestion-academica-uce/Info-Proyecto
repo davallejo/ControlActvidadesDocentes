@@ -1,0 +1,35 @@
+OBJETIVO
+-------
+El presente proyecto se propone como un modelo para la gestion administrativa de la UCE.
+
+ALCANCE
+-------
+El proyecto tiene los siguientes módulos a construirse:
+
+· M1. Control de docentes (permisos, vacaciones, asistencia)
+
+· M2. Carga horaria y leccionario
+
+· M3. Seguimiento al sílabo
+
+· M4. Coordinación académica
+
+
+REQUISITOS SW PARA DESARROLLO
+-----------------------------
+EL proyecto se encuentra desarrollado bajo la tecnología Java EE 7 para lo cual se requiere de los siguientes aplicativos:
+* Java JDK v1.8 update(131) o superior
+* IDE Netbeans 8.2
+* Servidor de Aplicaciones WildFly 10.1
+* Motor de Base de Datos PostgreSQL 9.5 (Navicat para Gestión)
+* Framework Bootstrap v.X para el FrontEnd
+
+
+REQUISITOS HW PARA DESARROLLO
+-----------------------------
+Los principales recursos de hardware para el correcto funcionamiento del aplicativo son:
+* SO. Windows 7, 8 , 10 o Linux
+* 4GB de memoria RAM
+* Procesador de 1.8 GHZ
+
+

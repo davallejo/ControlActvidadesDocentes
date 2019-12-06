@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:body>
+        
+        <ui:composition template="../../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+              <h:form id="form">
+                <div class="marco">
+                    <h4>DETALLE CARGA HORARIA SELECCIONADA  </h4>
+
+                    <div class="row">
+                        
+                            <div class="row" style="margin-top: 50px;">
+
+                                <div class="col-md-12">
+                                    <p:dataTable id="checkboxDT" var="det" value="#{cargarDatos.detalles_carga}" selectionMode="multiple" selection="#{cargarDatos.detalle_seleccionado}" rowKey="#{det.id}">
+
+                                        <f:facet name="header">
+                                            DETALLE
+                                        </f:facet>
+                                        <p:column headerText="Fecha" visible="#{cargarDatos.camposReporte[0]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.fecha}" />
+                                        </p:column>
+                                         <p:column headerText="Hora Inicial" visible="#{cargarDatos.camposReporte[1]}" >
+                                             <h:outputText value="#{det.codCargaHoraria.horaInicial}" />
+                                        </p:column>
+                                        <p:column headerText="Hora Final" visible="#{cargarDatos.camposReporte[2]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.horaFin}" />
+                                        </p:column>
+                                        <p:column headerText="Codogo de Carga" visible="#{cargarDatos.camposReporte[3]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.codTipoCh.id}" />
+                                        </p:column>
+                                        <p:column headerText="CI Docente" visible="#{cargarDatos.camposReporte[4]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.codDocente.id}" />
+                                        </p:column>
+                                        <p:column headerText="Tema" visible="#{cargarDatos.camposReporte[5]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.tema}" />
+                                        </p:column>
+                                        <p:column headerText="Horario" visible="#{cargarDatos.camposReporte[6]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.horario}" />
+                                        </p:column>
+                                        <p:column headerText="Materia" visible="#{cargarDatos.camposReporte[7]}" >
+                                            <h:outputText value="#{det.codMateria.nombre}" />
+                                        </p:column>
+                                        <p:column headerText="Aula" visible="#{cargarDatos.camposReporte[8]}" >
+                                            <h:outputText value="#{det.codAula}" />
+                                        </p:column>
+                                        <p:column headerText="CI Estudiante" visible="#{cargarDatos.camposReporte[9]}" >
+                                            <h:outputText value="#{det.codEstudiante.id}" />
+                                        </p:column>
+                                        <p:column headerText="Actividad"  visible="#{cargarDatos.camposReporte[10]}" >
+                                            <h:outputText value="#{det.actividad}" />
+                                        </p:column>
+                                        <p:column headerText="Proyecto" visible="#{cargarDatos.camposReporte[11]}" >
+                                            <h:outputText value="#{det.codProyecto.nombre}" />
+                                        </p:column>
+                                        <p:column headerText="Curso" visible="#{cargarDatos.camposReporte[12]}" >                                        
+                                            <h:outputText value="#{det.codCurso.id}" />
+                                        </p:column>
+                                        <p:column headerText="Cod Carga"  visible="#{cargarDatos.camposReporte[13]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.id}" />
+                                        </p:column>
+                                        <p:column headerText="Evidencia"  visible="#{cargarDatos.camposReporte[14]}" >
+                                            <h:outputText value="#{det.evidencia}" />
+                                        </p:column>
+                                        <p:column headerText="Tutor" visible="#{cargarDatos.camposReporte[15]}" >
+                                            <h:outputText value="#{det.tutor}" />
+                                        </p:column>
+                                        <p:column headerText="Observación " visible="#{cargarDatos.camposReporte[16]}" >
+                                            <h:outputText value="#{det.observacion}" />
+                                        </p:column>
+
+                                    </p:dataTable>
+                                   
+                                    <p:dialog header="Ventana de edición" widgetVar="multiCarDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="380">
+                                        <p:outputPanel id="multiCarDetail" style="text-align:center;">
+                                            <ui:repeat value="#{cargarDatos.detalle_seleccionado}" var="det">
+<!--                                                <h:inputText  value="#{det.codMateria.nombre}" style="display:block;margin-top: 3px"/>-->
+                                                
+                                                <h:panelGrid columns="2">
+                                                                                                 
+                                                
+                                                    <h:outputText class="form-control" value="Inicio" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[1]}" />
+                                                    <h:inputText class="form-control" value="#{det.codCargaHoraria.horaInicial}" rendered="#{cargarDatos.camposReporte[1]}"/>
+                                                    
+                                                    <h:outputText class="form-control" value="Fin" style="margin-right: 3px"  rendered="#{cargarDatos.camposReporte[2]}" />
+                                                    <h:inputText class="form-control" value="#{det.codCargaHoraria.horaFin}" rendered="#{cargarDatos.camposReporte[2]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="Tipo de carga" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[3]}" />
+                                                    <h:inputText class="form-control" value="#{det.codCargaHoraria.codTipoCh.id}" rendered="#{cargarDatos.camposReporte[3]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="Docente" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[4]}" />
+                                                    <h:inputText class="form-control" value="#{det.codCargaHoraria.codDocente.id}" rendered="#{cargarDatos.camposReporte[4]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="Tema" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[5]}" />
+                                                    <h:inputText class="form-control" value="#{det.codCargaHoraria.tema}" rendered="#{cargarDatos.camposReporte[5]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="Horario" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[6]}" />
+                                                    <h:selectOneMenu   value = "#{cargarDatos.hora}" class="form-control1 from-control" rendered="#{cargarDatos.camposReporte[6]}" > 
+                                                        <f:selectItems value="#{cargarDatos.horas}"  />
+                                                    </h:selectOneMenu>
+                                                    
+                                                    <h:outputText class="form-control" value="Materia" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[7]}" />
+                                                    <h:selectOneMenu class="form-control" value="#{cargarDatos.materia}" rendered="#{cargarDatos.camposReporte[7]}" >
+                                                            <f:selectItems value="#{cargarDatos.asignaturas}" />
+                                                    </h:selectOneMenu>
+                                                    
+                                                    <h:outputText class="form-control" value="Aula" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[8]}" />
+                                                    <h:inputText class="form-control" value="#{det.codAula}" rendered="#{cargarDatos.camposReporte[8]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="Estudiante" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[9]}" />
+                                                    <h:inputText class="form-control" value="#{det.codEstudiante.id}" rendered="#{cargarDatos.camposReporte[9]}" />
+                                                    
+                                                    <h:outputText class="form-control"  value="Actividad" style="margin-right: 0px" rendered="#{cargarDatos.camposReporte[10]}" />
+                                                    <h:inputText class="form-control" value="#{det.actividad}" rendered="#{cargarDatos.camposReporte[10]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="Proyecto" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[11]}" />
+                                                    <h:selectOneMenu class="form-control" value="#{cargarDatos.tema}" rendered="#{cargarDatos.camposReporte[11]}" >
+                                                            <f:selectItems value="#{cargarDatos.nombres_proyectos}" />
+                                                    </h:selectOneMenu> 
+                                                    
+                                                    <h:outputText class="form-control" value="Curso" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[12]}" />
+                                                    <h:selectOneMenu   value = "#{cargarDatos.curso}" class="form-control1 from-control" rendered="#{cargarDatos.camposReporte[12]}" > 
+                                                        <f:selectItems    value="#{cargarDatos.cursosCodigos}" />
+                                                    </h:selectOneMenu> 
+                                                    
+                                                    <h:outputText class="form-control" value="Tipo carga" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[13]}" />
+                                                    <h:inputText class="form-control" value="#{det.codCargaHoraria.id}" rendered="#{cargarDatos.camposReporte[13]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="evidencia" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[14]}" />
+                                                    <h:inputText class="form-control" disabled="true" value="#{det.evidencia}" rendered="#{cargarDatos.camposReporte[14]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="Tutor" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[15]}" />
+                                                    <h:inputText class="form-control" value="#{det.tutor}"  rendered="#{cargarDatos.camposReporte[15]}" />
+                                                    
+                                                    <h:outputText class="form-control" value="Observacion" style="margin-right: 3px" rendered="#{cargarDatos.camposReporte[16]}" />
+                                                    <h:inputText class="form-control" value="#{det.observacion}"  rendered="#{cargarDatos.camposReporte[16]}" />
+                                                </h:panelGrid>
+                                                <h:commandButton action="#{cargarDatos.actualizarDetalleCarga()}" style="margin-top: 3px" class="btn btn-default btn-block" value="Actualizar" />
+                                            </ui:repeat>
+                                        </p:outputPanel>
+                                    </p:dialog>
+                                </div>
+                            </div>
+
+                    </div>   
+
+
+
+                    <div class="row" style="margin-top: 70px">
+
+                        <div class="col-md-4">
+<!--                            <h:commandButton action="#{cargarDatos.limpiarCampos()}" value="LIMPIAR" class="btn btn-block btn-default" />-->
+                            <p:commandButton value="EDITAR" process="checkboxDT" update=":form:multiCarDetail" styleClass="btn btn-block btn-default"  oncomplete="PF('multiCarDialog').show()" />
+
+                        </div>
+                       
+                   
+                    </div>
+                </div>
+ </h:form>
+                <!--VENTANA MODAL-->
+                <button style="display: none" id="modal1" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    LOS DATOS SE GUARDARON CORRECTAMENTE
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form jsf:id="in">
+                                    <button jsf:action="#{cargarDatos.redireccion()}" type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span>
+                                        <f:ajax execute="@form" render="@form"  />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>
+
+
+

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <body>
+
+        
+        
+        
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+            
+            
+
+            <ui:define name="content">
+                
+                <div class = "print-only">
+                
+                
+                <div class="marco" >
+                    <!--                    <h:form>
+                                            <h5>USUARIO:  <h:outputLabel value="#{login.usuario.apellidoP} #{login.usuario.nombreP}"/></h5>
+                                        </h:form>-->
+
+                   
+                    <h4 >REPORTE DE COORDINADOR DE ÁREA</h4>
+                    <h:form>
+                        <h5>COORDINADOR:</h5>
+                        <p:dataTable class="row text-center text-uppercase" draggableColumns="true" style="margin-bottom:50px" value="#{login.usuario}" var="items" >
+                            <tbody>   
+                                <p:column>
+                                    <f:facet name="header" class="col-md-12">NOMBRES</f:facet>#{login.usuario.nombreP}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header" class="col-md-12">APELLIDOS</f:facet>#{login.usuario.apellidoP}
+                                </p:column>    
+                                <p:column>
+                                    <f:facet name="header">ÁREA</f:facet>#{coordinadoresAreaLista.ca.nombre}
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">FECHA DE REPORTE</f:facet><p:calendar  pt:placeholder="INGRESE FECHA" styleClass="from-control"  value="#{cargarDatos.fecha}"  />
+                                </p:column>
+                                                   
+
+                            </tbody>
+                        </p:dataTable>
+                        <h5>COORDINADORES DE ASIGNATURA DEL ÁREA:</h5>
+                        <p:dataTable class="marco text-center text-uppercase" draggableColumns="true" style="margin-bottom:50px" value="#{coordinadoresAreaLista.cas}" var="item" >
+                            <tbody>   
+                                <p:column>
+                                    <f:facet name="header" class="col-md-12">NOMBRES</f:facet>#{item.codCoordinador.nombreP}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header" class="col-md-12">APELLIDOS</f:facet>#{item.codCoordinador.apellidoP}
+                                </p:column>    
+                                <p:column>
+                                    <f:facet name="header">ASIGNATURA</f:facet>#{item.codAsignatura.nombre}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">SEMESTRE</f:facet>#{item.codAsignatura.codSemestre.nombre}
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header"># UNIDADES ESTUDIADAS</f:facet>
+                                    <p:inputText></p:inputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">% DE SILABUS ESTUDIADO</f:facet>
+                                    <p:inputText></p:inputText>
+                                </p:column>
+                            </tbody>
+                        </p:dataTable>
+                    </h:form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h:form style="margin-top: 30px">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <table class="table table-responsive">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>OBSERVACIONES:</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th> <p:inputTextarea rows="5" cols="75"/></th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                    
+<!--                                <p:commandButton style="margin-top: 15px" styleClass="btn btn-info btn-block"  action=""  value="GUARDAR"/>                                                -->
+                            </h:form>
+
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+<!--                                                           <div class="col-md-12">
+                                            <script>var pfHeaderImgUrl = '';
+                                                var pfHeaderTagline = '';
+                                                var pfdisableClickToDel = 1;
+                                                var pfHideImages = 0;
+                                                var pfImageDisplayStyle = 'right';
+                                                var pfDisablePDF = 0;
+                                                var pfDisableEmail = 1;
+                                                var pfDisablePrint = 1;
+                                                var pfCustomCSS = '';
+                                                var pfBtVersion = '2';
+                                                (function () {
+                                                    var js, pf;
+                                                    pf = document.createElement('script');
+                                                    pf.type = 'text/javascript';
+                                                    pf.src = '//cdn.printfriendly.com/printfriendly.js';
+                                                    document.getElementsByTagName('head')[0].appendChild(pf)
+                                                })();</script>
+                                        </div> -->
+                                        <div class="col-md-12">
+                                            <h:commandButton style="margin-top: 15px" value="PDF" styleClass="btn btn-info btn-block" onclick="window.print()"  />
+                                            <link href="estilos_impresion.css" rel="stylesheet" type="text/css" media="print"></link>
+                                        </div> 
+
+
+    
+<!--                    <script src="https://cdn.convertapi.com/button.js" data-secret="1J4rrmVwKr0yrK1V"></script>
+                    <link rel="stylesheet" type="text/css" href="https://cdn.convertapi.com/button.css"/>
+                    <button class="convertapi-btn">PDF</button>-->
+
+                    
+                    
+                    
+                    
+
+
+                    
+                    <div class="row" style="margin-top: 70px">
+                        <div class="col-md-4">
+                            <h:button outcome="registros_semestre_idc" value="LIMPIAR" class="btn btn-block btn-default" />
+                        </div>
+                        <div class="col-md-4">
+                            <h:button value="IMPRIMIR" class="btn btn-block btn-default" />
+                        </div>
+                        <div class="col-md-4">
+                            <h:commandButton value="SALIR DEL SISTEMA" onclick="window.history.back();" class="btn btn-block btn-danger" />
+                        </div>
+
+                    </div>
+                </div>
+                    
+                    
+                                </div>
+
+                    
+            </ui:define>
+                
+
+        </ui:composition>
+            
+
+    </body>
+</html>

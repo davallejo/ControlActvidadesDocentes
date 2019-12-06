@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <link rel="stylesheet" href="../resources/css/bootstrap-theme.min.css" type="text/css"/>
+      
+    <body>
+        
+        <ui:composition template="./../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--                    <h:form>
+                                            <h5>USUARIO:  <h:outputLabel value="#{login.usuario.apellidoP} #{login.usuario.nombreP}"/></h5>
+                                        </h:form>-->
+                    <div class="row">
+                        <h1>MENÚ DE OPCIONES:</h1>
+                        <h:form>
+                            <div class="imgBox center-block col-xs-12 col-sm-4">
+                                <h:commandLink action="modulo3/opcionesDRM3.xhtml?faces-redirect=true">
+                                    <h:graphicImage library="imagenes" name="icon_administrativo.jpg" />
+                                    <p>Seguimiento al Silabo</p>
+                                </h:commandLink>
+                            </div>
+                            <!--
+                            <div class="imgBox center-block col-xs-12 col-sm-4">
+                                <h:commandLink action="opcionesDM2.xhtml?faces-redirect=true">
+                                    <h:graphicImage library="imagenes" name="icon_docente.jpg" />
+                                    <p>Carga Horaria</p>
+                                </h:commandLink>                                
+                            </div>                            
+                            <div class="imgBox center-block col-xs-12 col-sm-4">
+                                <h:commandLink action="opcionesDM4.xhtml?faces-redirect=true">
+                                    <h:graphicImage library="imagenes" name="icon_estudiante.jpg" />
+                                    <p>Admin</p>
+                                </h:commandLink>                                 
+                            </div>
+                            -->
+                            <div class="imgBox center-block col-xs-12 col-sm-4">
+                                <h:commandLink action="modulo4/asignarCoordinadores.xhtml?faces-redirect=true">
+                                    <h:graphicImage library="imagenes" name="icon_docente.jpg" />
+                                    <p>Asignar Coordinadores</p>
+                                </h:commandLink>                                 
+                            </div>
+                            <div class="imgBox center-block col-xs-12 col-sm-4">
+                                <h:commandLink action="modulo1/horario.xhtml?faces-redirect=true">
+                                    <h:graphicImage library="imagenes" name="icon-horariod.jpg" />
+                                    <p>Horario Docente</p>
+                                </h:commandLink>
+                            </div>
+                            <div class="imgBox center-block col-xs-12 col-sm-4">
+                                <h:commandLink action="modulo1/opcionReporte.xhtml?faces-redirect=true">
+                                    <h:graphicImage library="imagenes" name="icon-reported.png" />
+                                    <p>Reporte de Asistencias</p>
+                                </h:commandLink>
+                            </div>
+                        </h:form>
+                    </div>
+                </div> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:body>
+        
+        <ui:composition template="../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <h:form> 
+                        <h:panelGrid columns="2">
+                            <h:inputText style="color:blue" disabled="true"  value="#{cargarDatos.horasDefinidas}" /> 
+                            <h:inputText style="color:blue;margin-left: 2px" disabled="true"  value="#{cargarDatos.sumadeHoras}" /> 
+                        </h:panelGrid>        
+                    </h:form>
+                    <h4>CARGAR HORARIAS  REGISTRADAS  </h4>
+    
+                    <div class="row">
+                        <h:form>
+                               
+                            <div class="row" style="margin-top: 30px;">
+
+                                <div class="col-md-4">
+                                    <h:selectOneMenu  value = "#{cargarDatos.cargaConsultar}" class="form-control1" > 
+                                        <f:selectItems   value="#{cargarDatos.carga_nombres}" />
+                                    </h:selectOneMenu> 
+
+                                </div>
+                                <div class="col-md-2">
+                                    <h:inputText style="margin-left: 10px" class="form-control" value="#{cargarDatos.ci_docente}" pt:placeholder="CI profesor" />
+                                </div>
+                                <div class="col-md-4" style="margin-bottom: 3px">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p:calendar  pt:placeholder="SELECCIONE FECHA" styleClass="from-control"  value="#{cargarDatos.fecha_a_buscar}"  locale="es" />
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <h:commandButton value="BUSCAR" action="#{cargarDatos.buscarEntradasGeneral()}" class="btn btn-info col-md-6 pull-right" />
+                                        </div> 
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+
+                                    <p:dataTable id="checkboxDT" var="det" value="#{cargarDatos.detalles_carga}" selectionMode="multiple" selection="#{cargarDatos.detalle_seleccionado}" rowKey="#{det.id}">
+
+                                        <f:facet name="header">
+                                            DETALLE
+                                        </f:facet>
+                                        <p:column   headerText="Docente" rendered="#{cargarDatos.visibleNombre}" >
+                                            <h:outputText value="#{det.codCargaHoraria.codDocente.nombreP} #{det.codCargaHoraria.codDocente.apellidoP}  " />
+                                        </p:column>
+                                        <p:column headerText="Fecha" rendered="#{cargarDatos.camposReporte[0]}" sortBy="#{det.codCargaHoraria.fecha}" >
+                                            <h:outputText value="#{det.codCargaHoraria.fecha}" />
+                                        </p:column>
+                                         <p:column headerText="Hora Inicial" rendered="#{cargarDatos.camposReporte[1]}" >
+                                             <h:outputText value="#{det.codCargaHoraria.horaInicial}" />
+                                        </p:column>
+                                        <p:column headerText="Hora Final" rendered="#{cargarDatos.camposReporte[2]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.horaFin}" />
+                                        </p:column>
+                                        <p:column headerText="Codigo de Carga" rendered="#{cargarDatos.camposReporte[3]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.codTipoCh.id}" />
+                                        </p:column>
+                                        <p:column headerText="CI Docente" rendered="#{cargarDatos.camposReporte[4]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.codDocente.id}" />
+                                        </p:column>
+                                        <p:column headerText="Tema" rendered="#{cargarDatos.camposReporte[5]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.tema}" />
+                                        </p:column>
+                                        <p:column headerText="Horario" rendered="#{cargarDatos.camposReporte[6]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.horario}" />
+                                        </p:column>
+                                        <p:column headerText="Materia" rendered="#{cargarDatos.camposReporte[7]}" >
+                                            <h:outputText value="#{det.codMateria.nombre}" />
+                                        </p:column>
+                                        <p:column headerText="Aula" rendered="#{cargarDatos.camposReporte[8]}" >
+                                            <h:outputText value="#{det.codAula}" />
+                                        </p:column>
+                                        <p:column headerText="CI Estudiante" rendered="#{cargarDatos.camposReporte[9]}" >
+                                            <h:outputText value="#{det.codEstudiante.id}" />
+                                        </p:column>
+                                        <p:column headerText="Actividad"  rendered="#{cargarDatos.camposReporte[10]}" >
+                                            <h:outputText value="#{det.actividad}" />
+                                        </p:column>
+                                        <p:column headerText="Proyecto" rendered="#{cargarDatos.camposReporte[11]}" >
+                                            <h:outputText value="#{det.codProyecto.nombre}" />
+                                        </p:column>
+                                        <p:column headerText="Curso" rendered="#{cargarDatos.camposReporte[12]}" >                                        
+                                            <h:outputText value="#{det.codCurso.id}" />
+                                        </p:column>
+                                        <p:column headerText="Cod Carga"  rendered="#{cargarDatos.camposReporte[13]}" >
+                                            <h:outputText value="#{det.codCargaHoraria.id}" />
+                                        </p:column>
+                                        <p:column headerText="Evidencia"  rendered="#{cargarDatos.camposReporte[14]}" >
+                                    
+                                            <p:commandButton value="Descargar" ajax="false"  icon="ui-icon-arrowthick-1-s"  >
+                                                <p:fileDownload value="#{cargarDatos.descargarArchivo(det.evidencia)}" />
+                                            </p:commandButton>
+                                        </p:column>
+                                        <p:column headerText="Tutor" rendered="#{cargarDatos.camposReporte[15]}" >
+                                            <h:outputText value="#{det.tutor}" />
+                                        </p:column>
+                                        <p:column headerText="Observación " rendered="#{cargarDatos.camposReporte[16]}" >
+                                            <h:outputText value="#{det.observacion}" />
+                                        </p:column>
+
+                                    </p:dataTable>
+
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 70px">
+
+                                <div class="col-md-4">
+                                    <h:commandButton action="#{cargarDatos.limpiarCampos()}" value="LIMPIAR" class="btn btn-block btn-default" />
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- 
+                                     <h:button value="IMPRIMIR REPORTE" class="btn btn-block btn-default" />
+                                    -->
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <h:commandLink   >
+                                        <p:graphicImage height="40px" name="imagenes/pdf.png" />
+                                        <p:dataExporter   type="pdf" target="checkboxDT" fileName="CARGA HORARIA" pageOnly="true" preProcessor="#{cargarDatos.preProcessPDF}"  options="#{cargarDatos.pdfOpt}"  />
+                                    </h:commandLink>
+                                </div>
+
+                            </div>
+                        </h:form>
+                    </div>   
+
+
+
+                  
+                </div>
+
+                <!--VENTANA MODAL-->
+                <button style="display: none  " id="modal1" type="button" class=" btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    EL ARCHIVO NO EXISTE
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                
+                <button style="display: none  " id="modal2" type="button" class=" btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Open Modal</button>
+                <div id="myModal2" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    EL DOCENTE NO EXISTE
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>
+
+
+

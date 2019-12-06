@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <!--CUEROPO-->
+                <div class="marco">
+                    <h4>REGISTRE LA INFORMACIÓN DEL SILABO</h4>
+
+                    <h:form>
+
+                        <p:fieldset>
+                            <p:outputLabel value="PERÍODO ACADÉMICO:"  />                    <br/>
+                            <h:commandLink value="pdf"> 
+                                <p:dataExporter type="pdf" target="dtUno" fileName="silabos"/> 
+                            </h:commandLink>
+                            <p:dataTable  id="dtUno" class="table table-responsive" >
+                                <p:column>
+                                    <p:selectOneMenu id="genSilabo" value="#{managedBeanSilabo.codPeriodo}" required="true" >  
+                                        <f:selectItem itemLabel="--Selecciones--" itemValue="" />
+                                        <f:selectItems value="#{managedBeanSilabo.listaPeriodo}" var="Periodo"  itemValue="#{Periodo}" itemLabel="#{Periodo.anioInicio}-#{Periodo.anioFin}"/>
+                                    </p:selectOneMenu>
+
+                                </p:column>
+                                <thead>
+
+                                    <tr>
+                                        <th> <p:outputLabel value="PERÍODO ACADÉMICO:"  /></th>
+                                        <th> 
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <thead>
+                                    <tr>
+                                        <th> <p:outputLabel value="ASIGNATURA:"  /></th>
+                                        <th> <p:selectOneMenu id="genPerAsi" value="#{managedBeanSilabo.asig}" required="true" >  
+                                                <f:selectItem itemLabel="--Selecciones--" itemValue=""/>
+                                                <f:selectItems value="#{managedBeanSilabo.pro}" var="Asignaturas"  itemValue="#{Asignaturas}" itemLabel="#{Asignaturas.nombre}" />
+                                            </p:selectOneMenu></th>
+
+                                    </tr>
+                                </thead>
+                            </p:dataTable>
+                            <div class="row" style="margin-top: 70px">
+                                <div class="col-md-4">
+                                    <h:commandButton styleClass="btn btn-info btn-block"  actionListener="#{managedBeanSilabo.guardar()}" action="registroUnidades?faces-redirect=true" value="GUARDAR DATOS"/>
+
+
+                                    <h:commandLink value="pdf"> 
+                                        <p:dataExporter type="pdf" target="dtUno" fileName="silabos"/> 
+                                    </h:commandLink>
+
+                                </div>
+                            </div>
+
+                        </p:fieldset> 
+                    </h:form>           
+
+
+                    <div class="row" style="margin-top: 70px">
+
+                        <div class="col-md-4">
+                            <h:commandButton value="OPCIONES DE COORDINADOR" onclick="window.history.back();" class="btn btn-block btn-danger" />
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

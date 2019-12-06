@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>Información Guardada con Exito...</h4>
+
+                        <h:form>
+
+                            <p:fieldset>
+                                <div>
+                                    <th><p:outputLabel  value="MENÚ EDICIÓN - INSERCIÓN:"/></th>
+                                    <br/>
+                                    <th><p:outputLabel  value="ESCOJA UNA OPCIÓN:"/></th>
+
+                                </div>
+                                <br/>
+
+                                <div class="row" style="margin-top: 70px">
+                                    
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block" actionListener="#{managedBeanSilabo.listaLasUnidades()}" action="listarUnidadesEditar?faces-redirect=true" value="EDITAR UNIDADES:"/>
+                                    </div> 
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block" action="registroUnidadesInsertar?faces-redirect=true" value="INGRESAR UNIDAD:"/>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row" style="margin-top: 70px">
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block" actionListener="#{managedBeanSilabo.listaLasUnidades()}" action="listarUnidadesEditarContenido?faces-redirect=true" value="EDITAR CONTENIDO:"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block" actionListener="#{managedBeanSilabo.listaLasUnidades()}" action="listarUnidadesInsertarContenido?faces-redirect=true" value="INGRESAR CONTENIDO:"/>
+                                    </div>
+
+                                </div>
+                                <div class="row" style="margin-top: 70px">
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block" action="opcionesCASM3?faces-redirect=true" value="FINALIZAR:"/>
+                                    </div>
+<br/>
+                                    <th><p:outputLabel  value="SE RECOMIENDA CERRAR SESIÓN Y VOLVER A INICIAR PARA VER LOS CAMBIOS REALIZADOS"/></th>
+                                </div>
+
+
+
+
+                            </p:fieldset> 
+
+                        </h:form>           
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

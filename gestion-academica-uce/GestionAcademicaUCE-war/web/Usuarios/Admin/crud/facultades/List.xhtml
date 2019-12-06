@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/Plantillas/plantilla.xhtml">
+
+
+        <!--        <ui:define name="title">
+                    <h:outputText value="#{bundle.ListFacultadesTitle}"></h:outputText>
+                </ui:define>-->
+
+        <ui:define name="content">
+
+            <div class="marco">
+                <div class="row">
+                    <h1>GESTION DE LAS FACULTADES</h1>
+
+                    <p:growl id="growl" life="3000" />
+
+                    <h:form id="FacultadesListForm">
+                        <p:panel header="FACULTADES DISPONIBLES">
+                            <p:dataTable id="datalist" value="#{facultadesController.items}" var="item"
+                                         selectionMode="single" selection="#{facultadesController.selected}"
+                                         paginator="true"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         >
+
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                                <!--                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListFacultadesTitle_id}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.id}"/>
+                                                        </p:column>-->
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFacultadesTitle_nombre}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombre}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFacultadesTitle_mision}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.mision}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListFacultadesTitle_vision}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.vision}"/>
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{facultadesController.prepareCreate}" update=":FacultadesCreateForm" oncomplete="PF('FacultadesCreateDialog').show()"/>
+                                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":FacultadesViewForm" oncomplete="PF('FacultadesViewDialog').show()" disabled="#{empty facultadesController.selected}"/>
+                                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":FacultadesEditForm" oncomplete="PF('FacultadesEditDialog').show()" disabled="#{empty facultadesController.selected}"/>
+                                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{facultadesController.destroy}" update=":growl,datalist" disabled="#{empty facultadesController.selected}"/>
+                                </f:facet>
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+
+                </div>
+            </div>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

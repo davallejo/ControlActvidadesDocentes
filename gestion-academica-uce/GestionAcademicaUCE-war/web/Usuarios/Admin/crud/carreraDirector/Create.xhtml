@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CarreraDirectorCreateDlg" widgetVar="CarreraDirectorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCarreraDirectorTitle}">
+            <h:form id="CarreraDirectorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{carreraDirectorController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.CreateCarreraDirectorLabel_fechaInicio}" for="fechaInicio" />
+                        <p:calendar id="fechaInicio" pattern="dd/MM/yyyy" value="#{carreraDirectorController.selected.fechaInicio}" title="#{bundle.EditCarreraDirectorTitle_fechaInicio}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCarreraDirectorLabel_fechaFin}" for="fechaFin" />
+                        <p:calendar id="fechaFin" pattern="dd/MM/yyyy" value="#{carreraDirectorController.selected.fechaFin}" title="#{bundle.EditCarreraDirectorTitle_fechaFin}"  showOn="button"/>
+                        <p:outputLabel value="Carrera" for="codCarrera" />
+                        <p:selectOneMenu id="codCarrera" value="#{carreraDirectorController.selected.codCarrera}" required="true" requiredMessage="#{bundle.EditCarreraDirectorRequiredMessage_codCarrera}">
+                            <f:selectItems value="#{carrerasController.itemsAvailableSelectOne}"
+                                           var="codCarreraItem"
+                                           itemValue="#{codCarreraItem}"
+                                           itemLabel="#{codCarreraItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Periodo" for="codPeriodo" />
+                        <p:selectOneMenu id="codPeriodo" value="#{carreraDirectorController.selected.codPeriodo}" required="true" requiredMessage="#{bundle.EditCarreraDirectorRequiredMessage_codPeriodo}">
+                            <f:selectItems value="#{periodoController.itemsAvailableSelectOne}"
+                                           var="codPeriodoItem"
+                                           itemValue="#{codPeriodoItem}"
+                                           itemLabel="#{codPeriodoItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Director" for="codDirector" />
+                        <p:selectOneMenu id="codDirector" value="#{carreraDirectorController.selected.codDirector}" required="true" requiredMessage="#{bundle.EditCarreraDirectorRequiredMessage_codDirector}">
+                            <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"
+                                           var="codDirectorItem"
+                                           itemValue="#{codDirectorItem}"
+                                           itemLabel="#{codDirectorItem.nombreP} #{codDirectorItem.apellidoP}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{carreraDirectorController.create}" value="#{bundle.Save}" update="display,:CarreraDirectorListForm:datalist,:growl" oncomplete="handleSubmit(args,'CarreraDirectorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('CarreraDirectorCreateDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

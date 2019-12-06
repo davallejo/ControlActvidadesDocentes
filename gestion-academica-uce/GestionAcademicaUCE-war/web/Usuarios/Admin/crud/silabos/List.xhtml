@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/Plantillas/plantilla.xhtml">
+
+
+        <!--        <ui:define name="title">
+                    <h:outputText value="#{bundle.ListSilabosTitle}"></h:outputText>
+                </ui:define>-->
+
+        <ui:define name="content">
+
+            <div class="marco">
+                <div class="row">
+                    <h1>GESTION DE LOS SILABOS</h1>
+
+                    <p:growl id="growl" life="3000" />
+
+                    <h:form id="SilabosListForm">
+                        <p:panel header="LISTADO DE SILABOS DISPONIBLES">
+                            <p:dataTable id="datalist" value="#{silabosController.items}" var="item"
+                                         selectionMode="single" selection="#{silabosController.selected}"
+                                         paginator="true"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         >
+
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                                <!--                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_id}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.id}"/>
+                                                        </p:column>-->
+                                <!--                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_nhPresencial}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.nhPresencial}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_nhPracticas}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.nhPracticas}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_nhtPresencial}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.nhtPresencial}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_nhtVirtual}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.nhtVirtual}"/>
+                                                        </p:column>-->
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSilabosTitle_perfilDocenteAcadem}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.perfilDocenteAcadem}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSilabosTitle_perfilDocenteProf}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.perfilDocenteProf}"/>
+                                </p:column>
+<!--                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSilabosTitle_descripPerfilDocente}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.descripPerfilDocente}"/>
+                                </p:column>-->
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSilabosTitle_vigente}"/>
+                                    </f:facet>
+                                    <p:selectBooleanCheckbox value="#{item.vigente}" disabled="true"/>
+                                </p:column>
+                                <!--                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_observaciones}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.observaciones}"/>
+                                                        </p:column>-->
+                                <!--                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_revisionCa}"/>
+                                                            </f:facet>
+                                                            <p:selectBooleanCheckbox value="#{item.revisionCa}" disabled="true"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_revisionDc}"/>
+                                                            </f:facet>
+                                                            <p:selectBooleanCheckbox value="#{item.revisionDc}" disabled="true"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_aprobado}"/>
+                                                            </f:facet>
+                                                            <p:selectBooleanCheckbox value="#{item.aprobado}" disabled="true"/>
+                                                        </p:column>-->
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSilabosTitle_fechaElaboracion}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaElaboracion}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </h:outputText>
+                                </p:column><!--
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSilabosTitle_fechaRevision}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaRevision}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </h:outputText>
+                                </p:column>-->
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSilabosTitle_fechaAprobacion}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaAprobacion}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <!--                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_revisionDocentes}"/>
+                                                            </f:facet>
+                                                            <p:selectBooleanCheckbox value="#{item.revisionDocentes}" disabled="true"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalPractica1h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalPractica1h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalPractica2h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalPractica2h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalAutonomo1h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalAutonomo1h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalAutonomo2h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalAutonomo2h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalTrabajosInd1h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalTrabajosInd1h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalTrabajosInd2h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalTrabajosInd2h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalTrabajosIntegrador1h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalTrabajosIntegrador1h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalTrabajosIntegrador2h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalTrabajosIntegrador2h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalTrabajosGrup1h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalTrabajosGrup1h}"/>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_evalTrabajosGrup2h}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.evalTrabajosGrup2h}"/>
+                                                        </p:column>-->
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Asignatura"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.codAsignatura.nombre}"/>
+                                </p:column>
+                                <!--                        <p:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="#{bundle.ListSilabosTitle_codEvaluacion}"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.codEvaluacion}"/>
+                                                        </p:column>-->
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Periodo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.codPeriodo.nombre}"/>
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{silabosController.prepareCreate}" update=":SilabosCreateForm" oncomplete="PF('SilabosCreateDialog').show()"/>
+                                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SilabosViewForm" oncomplete="PF('SilabosViewDialog').show()" disabled="#{empty silabosController.selected}"/>
+                                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SilabosEditForm" oncomplete="PF('SilabosEditDialog').show()" disabled="#{empty silabosController.selected}"/>
+                                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{silabosController.destroy}" update=":growl,datalist" disabled="#{empty silabosController.selected}"/>
+                                </f:facet>
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+
+                </div>
+            </div>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

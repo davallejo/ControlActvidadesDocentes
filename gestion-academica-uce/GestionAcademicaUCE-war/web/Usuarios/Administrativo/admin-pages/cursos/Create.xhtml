@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CursosCreateDlg" widgetVar="CursosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCursosTitle}">
+            <h:form id="CursosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cursosController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.CreateCursosLabel_nomenclatura}" for="nomenclatura" />
+                        <p:inputText id="nomenclatura" value="#{cursosController.selected.nomenclatura}" title="#{bundle.CreateCursosTitle_nomenclatura}" />
+                        
+                        <p:outputLabel value="Asignatura" for="codAsignatura" />
+                        <p:selectOneMenu id="codAsignatura" value="#{cursosController.selected.codAsignatura}" required="true" requiredMessage="#{bundle.EditCursosRequiredMessage_codAsignatura}">
+                            <f:selectItems value="#{asignaturasController.itemsAvailableSelectOne}"
+                                           var="codAsignaturaItem"
+                                           itemValue="#{codAsignaturaItem}"
+                                           itemLabel="#{codAsignaturaItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Paralelo" for="codParalelo" />
+                        <p:selectOneMenu id="codParalelo" value="#{cursosController.selected.codParalelo}" required="true" requiredMessage="#{bundle.EditCursosRequiredMessage_codParalelo}">
+                            <f:selectItems value="#{paraleloController.itemsAvailableSelectOne}"
+                                           var="codParaleloItem"
+                                           itemValue="#{codParaleloItem}"
+                                           itemLabel="#{codParaleloItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Periodo" for="codPeriodo" />
+                        <p:selectOneMenu id="codPeriodo" value="#{cursosController.selected.codPeriodo}" required="true" requiredMessage="#{bundle.EditCursosRequiredMessage_codPeriodo}">
+                            <f:selectItems value="#{periodoController.itemsAvailableSelectOne}"
+                                           var="codPeriodoItem"
+                                           itemValue="#{codPeriodoItem}"
+                                           itemLabel="#{codPeriodoItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Docente" for="codDocente" />
+                        <p:selectOneMenu id="codDocente" value="#{cursosController.selected.codDocente}" required="true" requiredMessage="#{bundle.EditCursosRequiredMessage_codDocente}">
+                            <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"
+                                           var="codDocenteItem"
+                                           itemValue="#{codDocenteItem}"
+                                           itemLabel="#{codDocenteItem.nombreP} #{codDocenteItem.apellidoP}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Estudiante" for="codEstudiante" />
+                        <p:selectOneMenu id="codEstudiante" value="#{cursosController.selected.codEstudiante}" >
+                            <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"
+                                           var="codEstudianteItem"
+                                           itemValue="#{codEstudianteItem}"
+                                           itemLabel="#{codEstudianteItem.nombreP} #{codEstudianteItem.apellidoP}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cursosController.create}" value="#{bundle.Save}" update="display,:CursosListForm:datalist,:growl" oncomplete="handleSubmit(args,'CursosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('CursosCreateDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

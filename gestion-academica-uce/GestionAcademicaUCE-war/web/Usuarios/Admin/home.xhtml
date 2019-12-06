@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        
+        <link rel="icon" href="../../resources/imagenes/logo-uce.png"></link>
+    </head>
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                
+                <div class="marco">
+                    <h1>PORTAL DE ADMINISTRACIÓN DE LA PLATAFORMA</h1>
+                    <p>USTED ES UN ADMINISTRDOR, ESTAS SON SUS TAREAS DISPONIBLES: </p>
+                    <div class="row">
+                        <!--                        -->                        
+                        <div class="col-md-6">                             
+
+                            <h4>ACADEMICO:</h4>
+                            <p:button outcome="crud/carreras/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR CARRERAS"/>
+                            <p:button outcome="crud/areaAcademica/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR AREAS ACADEMICAS"/>
+                            <p:button outcome="crud/asignaturas/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR ASIGNATURAS"/>
+                            <p:button outcome="crud/aula/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR AULAS"/>
+                           <!-- <p:button outcome="crud/carreraDirector/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR DIRECTOR DE CARRERA"/>-->
+                            <p:button outcome="crud/paralelo/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR PARALELOS"/>
+                            <p:button outcome="crud/semestre/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR SEMESTRES"/>
+                            <p:button outcome="crud/cursos/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR CURSOS"/>
+                            <p:button outcome="crud/cursoAula/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR CURSO CON AULA"/>
+<!--                            <p:button outcome="crud/silabos/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR SILABOS"/>-->
+                            <p:button outcome="crud/periodo/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR PERIODOS"/>
+                            <!-- <p:button outcome="crud/carreras/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR FACULTADES"/>-->
+                        </div>
+                        <div class="col-md-5">
+                            <h4>USUARIO:</h4>
+                            
+                            <p:button outcome="crud/usuarios/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="GESTIONAR USUARIOS"/>
+                            <p:button outcome="crud/rolUsuario/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block " value="GESTIONAR ROLES DE USUARIOS"/>
+<!--                            <p:button disabled="true" outcome="crud/facultades/List.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block " value="GESTIONAR ROLES"/>      -->
+                        </div>
+
+<!--                        <p:growl id="growl" life="3000" />
+
+                        <p:layout >
+                            <p:layoutUnit position="north" size="220" header="PORTAL DE ADMINISTRACIÓN DE LA PLATAFORMA">
+                                <h:form id="menuForm">
+                                    <p:menubar>
+                                        <p:submenu label="ACADEMICO">
+                                            <p:menuitem value="Carreras" outcome="crud/carreras/List.xhtml" />
+                                            <p:menuitem value="AreaAcademica" outcome="crud/areaAcademica/List.xhtml" />
+                                            <p:menuitem value="Asignaturas" outcome="crud/asignaturas/List.xhtml" />
+                                            <p:menuitem value="Aula" outcome="crud/aula/List.xhtml" />
+                                                <p:menuitem value="CarreraDirector" outcome="crud/carreraDirector/List.xhtml" />                                 
+                                            <p:menuitem value="Paralelo" outcome="crud/paralelo/List.xhtml" />
+                                            <p:menuitem value="Semestre" outcome="crud/semestre/List.xhtml" />
+                                            <p:menuitem value="Cursos" outcome="crud/cursos/List.xhtml" />
+                                            <p:menuitem value="Silabos" outcome="crud/silabos/List.xhtml" />
+                                        </p:submenu>
+                                        <p:submenu label="USUARIOS">
+                                            <p:menuitem value="RolUsuario" outcome="crud/rolUsuario/List.xhtml" />
+                                                <p:menuitem value="Roles" outcome="crud/roles/List.xhtml" />
+                                            <p:menuitem value="Usuarios" outcome="crud/usuarios/List.xhtml" />
+                                        </p:submenu>
+                                        
+                                        <p:submenu label="PLATAFORMA">
+                                                <p:menuitem value="Facultades" outcome="crud/facultades/List.xhtml" />
+                                            <p:menuitem value="Periodo" outcome="crud/periodo/List.xhtml" />
+                                        </p:submenu>
+                                    </p:menubar>
+                                </h:form>
+                            </p:layoutUnit>
+                           
+
+                        </p:layout>-->
+
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

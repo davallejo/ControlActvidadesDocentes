@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--                    <h:form>
+                                            <h5>USUARIO:  <h:outputLabel value="#{login.usuario.apellidoP} #{login.usuario.nombreP}"/></h5>
+                                        </h:form>-->
+
+                    <h1>OPCIONES DEL COORDINADOR DE AREA - MODULO 3</h1>
+                    <h4>¿QUE DESEA REGISTRAR?</h4>
+                    <div class="row">
+                        <div class="col-md-6">  
+                            <h3>ATENCIÓN </h3>
+                            <p>USTED ES UN PROFESOR, ESTAS SON SUS TAREAS DISPONIBLES PARA SEGUIMIENTO DE SILABO </p>
+
+                            <h4>INDICACIONES:</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item">1.ELEGIR LA INFORMACIÓN QUE DESEA LLENAR.</li>
+                                <li class="list-group-item">2.LLENAR INFORMACIÓN.</li> 
+                                <li class="list-group-item">3.DAR GUARDAR.</li>
+                                <li class="list-group-item">4.VOLVER Y LLENAR OTRA ENTRADA O SALIR.</li> 
+                            </ul>
+                            <h4>ORDEN DE LLENADO DE DATOS(LA PRIMERA VEZ):</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item">1.REGISTRAR SEMESTRE .</li>
+                                <li class="list-group-item">2.REGISTRAR ÁREA ACADÉMICA.</li> 
+                                <li class="list-group-item">3.REGISTRAR FACULTAD.</li>
+                                <li class="list-group-item">4.REGISTRAR CARRERA.</li> 
+                                <li class="list-group-item">5.REGISTRAR ASIGNATURA.</li>
+                                <li class="list-group-item">6.REGISTRAR SILABO.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5">
+                            <p:button  outcome="registroSemestre.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="REGISTRAR SEMESTRE"/>
+                            <p:button  outcome="registroAreasAcademicas.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="REGISTRAR ÁREA ACADÉMICA"/>
+                            <p:button  outcome="registroFacultades.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="REGISTRAR FACULTAD"/>
+                            <p:button  outcome="registroCarrera.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="REGISTRAR CARRERA"/>
+                            <p:button  outcome="registroAsignatura.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="REGISTRAR ASIGNATURA"/>
+                            <p:button  outcome="registroSilabo.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="REGISTRAR SILABO" />
+                            <p:button  outcome="verSilabo.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="VER/EDITAR SILABO" />
+                            <p:button  outcome="seguimientoSilaboDR.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="VER ESTADO DE SILABO DEL DOCENTE"/>                            
+                            <!--<p:button  outcome="generarSilabo.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="VER SILABO"/>-->
+
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

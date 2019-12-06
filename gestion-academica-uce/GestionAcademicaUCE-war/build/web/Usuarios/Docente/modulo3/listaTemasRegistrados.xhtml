@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <div class="row">
+                        <h1>SEGUIMIENTO DE SILABO POR PARTE DE LOS ESTUDIANTES</h1>                        
+
+                        <b:form id="segSilb" horizontal="true">
+                            <!-- OPCIONES SILABO -->
+                            <h3>Seleccione la materia que desea visualizar los temas</h3>
+                            <b:formGroup id="opSelect"> 
+
+                                <b:selectOneMenu value="#{seguimientoSilabos.curso}" colMd="4" label="Materia:" labelColMd="2">                                    
+                                    <f:selectItems value="#{seguimientoSilabos.cursosDocente}" var="list" 
+                                                   itemValue="#{list.id}" itemLabel="#{list.codAsignatura.nombre}"/>
+                                </b:selectOneMenu>
+
+                            </b:formGroup>
+                            <b:formGroup id="opDef">
+                                <b:inputText id="txcurso" value="#{seguimientoSilabos.curso.nomenclatura}" disabled="true" colMd="4" label="Curso:" labelColMd="2" />
+                                <b:inputText id="txparalelo" value="#{seguimientoSilabos.curso.codParalelo.nombre}" disabled="true" colMd="4" label="Paralelo:" labelColMd="2" />
+                            </b:formGroup>
+
+                            <b:commandButton value="Mostrar Silabo" onclick="segSilbLtsSlbWidget.DataTable().destroy();ajax:seguimientoSilabos.listarTemasReg();" ajax="true" update="opDef lstCont"/>
+
+                            <!-- LISTA DE TEMAS REGISTRADOS  -->
+                            <h3>Listado de los temas registrados</h3>
+                            <b:formGroup id="lstCont">                               
+
+                                <b:dataTable id="ltsSlb" var="item" value="#{seguimientoSilabos.ssTratados}" class="editableCarTable" 
+                                             excel="true" csv="true" pdf="true"   >
+                                    <b:dataTableColumn value="#{item.codUnidad.numeral}.#{item.codContenido.NItem}" label="ITEM" order="asc"/>  
+                                    <b:dataTableColumn value="#{item.codUnidad.nombre}" label="UNIDAD" orderable="false" />
+                                    <b:dataTableColumn value="#{item.codContenido.descripcion}" label="CONTENIDO" orderable="false" />
+
+                                    <b:dataTableColumn label="HORA INICIAL" orderable="false">                                        
+                                        <h:outputText value="#{item.horaInicio}">
+                                            <f:convertDateTime pattern="HH:mm:ss" timeZone="America/Guayaquil" />
+                                        </h:outputText>
+                                    </b:dataTableColumn>
+                                    <b:dataTableColumn label="HORA FINAL" orderable="false">
+                                        <h:outputText value="#{item.horaFin}">
+                                            <f:convertDateTime pattern="HH:mm:ss" timeZone="America/Guayaquil"/>
+                                        </h:outputText>
+                                    </b:dataTableColumn>
+
+                                    <b:dataTableColumn value="#{item.estadoContenido}" label="ESTADO" orderable="false" />
+
+                                </b:dataTable>
+                            </b:formGroup>                           
+
+                        </b:form>                        
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

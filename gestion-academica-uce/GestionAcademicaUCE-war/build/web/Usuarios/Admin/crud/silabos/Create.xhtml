@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SilabosCreateDlg" widgetVar="SilabosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSilabosTitle}">
+            <h:form id="SilabosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{silabosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{silabosController.selected.id}" title="#{bundle.CreateSilabosTitle_id}" required="true" requiredMessage="#{bundle.CreateSilabosRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_nhPresencial}" for="nhPresencial" />
+                        <p:inputText id="nhPresencial" value="#{silabosController.selected.nhPresencial}" title="#{bundle.CreateSilabosTitle_nhPresencial}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_nhPracticas}" for="nhPracticas" />
+                        <p:inputText id="nhPracticas" value="#{silabosController.selected.nhPracticas}" title="#{bundle.CreateSilabosTitle_nhPracticas}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_nhtPresencial}" for="nhtPresencial" />
+                        <p:inputText id="nhtPresencial" value="#{silabosController.selected.nhtPresencial}" title="#{bundle.CreateSilabosTitle_nhtPresencial}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_nhtVirtual}" for="nhtVirtual" />
+                        <p:inputText id="nhtVirtual" value="#{silabosController.selected.nhtVirtual}" title="#{bundle.CreateSilabosTitle_nhtVirtual}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_perfilDocenteAcadem}" for="perfilDocenteAcadem" />
+                        <p:inputText id="perfilDocenteAcadem" value="#{silabosController.selected.perfilDocenteAcadem}" title="#{bundle.CreateSilabosTitle_perfilDocenteAcadem}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_perfilDocenteProf}" for="perfilDocenteProf" />
+                        <p:inputText id="perfilDocenteProf" value="#{silabosController.selected.perfilDocenteProf}" title="#{bundle.CreateSilabosTitle_perfilDocenteProf}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_descripPerfilDocente}" for="descripPerfilDocente" />
+                        <p:inputText id="descripPerfilDocente" value="#{silabosController.selected.descripPerfilDocente}" title="#{bundle.CreateSilabosTitle_descripPerfilDocente}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_vigente}" for="vigente" />
+                        <p:selectBooleanCheckbox id="vigente" value="#{silabosController.selected.vigente}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{silabosController.selected.observaciones}" title="#{bundle.CreateSilabosTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_revisionCa}" for="revisionCa" />
+                        <p:selectBooleanCheckbox id="revisionCa" value="#{silabosController.selected.revisionCa}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_revisionDc}" for="revisionDc" />
+                        <p:selectBooleanCheckbox id="revisionDc" value="#{silabosController.selected.revisionDc}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_aprobado}" for="aprobado" />
+                        <p:selectBooleanCheckbox id="aprobado" value="#{silabosController.selected.aprobado}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_fechaElaboracion}" for="fechaElaboracion" />
+                        <p:calendar id="fechaElaboracion" pattern="MM/dd/yyyy" value="#{silabosController.selected.fechaElaboracion}" title="#{bundle.EditSilabosTitle_fechaElaboracion}" required="true" requiredMessage="#{bundle.EditSilabosRequiredMessage_fechaElaboracion}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_fechaRevision}" for="fechaRevision" />
+                        <p:calendar id="fechaRevision" pattern="MM/dd/yyyy" value="#{silabosController.selected.fechaRevision}" title="#{bundle.EditSilabosTitle_fechaRevision}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_fechaAprobacion}" for="fechaAprobacion" />
+                        <p:calendar id="fechaAprobacion" pattern="MM/dd/yyyy" value="#{silabosController.selected.fechaAprobacion}" title="#{bundle.EditSilabosTitle_fechaAprobacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_revisionDocentes}" for="revisionDocentes" />
+                        <p:selectBooleanCheckbox id="revisionDocentes" value="#{silabosController.selected.revisionDocentes}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalPractica1h}" for="evalPractica1h" />
+                        <p:inputText id="evalPractica1h" value="#{silabosController.selected.evalPractica1h}" title="#{bundle.CreateSilabosTitle_evalPractica1h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalPractica2h}" for="evalPractica2h" />
+                        <p:inputText id="evalPractica2h" value="#{silabosController.selected.evalPractica2h}" title="#{bundle.CreateSilabosTitle_evalPractica2h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalAutonomo1h}" for="evalAutonomo1h" />
+                        <p:inputText id="evalAutonomo1h" value="#{silabosController.selected.evalAutonomo1h}" title="#{bundle.CreateSilabosTitle_evalAutonomo1h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalAutonomo2h}" for="evalAutonomo2h" />
+                        <p:inputText id="evalAutonomo2h" value="#{silabosController.selected.evalAutonomo2h}" title="#{bundle.CreateSilabosTitle_evalAutonomo2h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalTrabajosInd1h}" for="evalTrabajosInd1h" />
+                        <p:inputText id="evalTrabajosInd1h" value="#{silabosController.selected.evalTrabajosInd1h}" title="#{bundle.CreateSilabosTitle_evalTrabajosInd1h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalTrabajosInd2h}" for="evalTrabajosInd2h" />
+                        <p:inputText id="evalTrabajosInd2h" value="#{silabosController.selected.evalTrabajosInd2h}" title="#{bundle.CreateSilabosTitle_evalTrabajosInd2h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalTrabajosIntegrador1h}" for="evalTrabajosIntegrador1h" />
+                        <p:inputText id="evalTrabajosIntegrador1h" value="#{silabosController.selected.evalTrabajosIntegrador1h}" title="#{bundle.CreateSilabosTitle_evalTrabajosIntegrador1h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalTrabajosIntegrador2h}" for="evalTrabajosIntegrador2h" />
+                        <p:inputText id="evalTrabajosIntegrador2h" value="#{silabosController.selected.evalTrabajosIntegrador2h}" title="#{bundle.CreateSilabosTitle_evalTrabajosIntegrador2h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalTrabajosGrup1h}" for="evalTrabajosGrup1h" />
+                        <p:inputText id="evalTrabajosGrup1h" value="#{silabosController.selected.evalTrabajosGrup1h}" title="#{bundle.CreateSilabosTitle_evalTrabajosGrup1h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_evalTrabajosGrup2h}" for="evalTrabajosGrup2h" />
+                        <p:inputText id="evalTrabajosGrup2h" value="#{silabosController.selected.evalTrabajosGrup2h}" title="#{bundle.CreateSilabosTitle_evalTrabajosGrup2h}" />
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_codAsignatura}" for="codAsignatura" />
+                        <p:selectOneMenu id="codAsignatura" value="#{silabosController.selected.codAsignatura}" >
+                            <f:selectItems value="#{asignaturasController.itemsAvailableSelectOne}"
+                                           var="codAsignaturaItem"
+                                           itemValue="#{codAsignaturaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_codEvaluacion}" for="codEvaluacion" />
+                        <p:selectOneMenu id="codEvaluacion" value="#{silabosController.selected.codEvaluacion}" >
+                            <f:selectItems value="#{evaluacionController.itemsAvailableSelectOne}"
+                                           var="codEvaluacionItem"
+                                           itemValue="#{codEvaluacionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateSilabosLabel_codPeriodo}" for="codPeriodo" />
+                        <p:selectOneMenu id="codPeriodo" value="#{silabosController.selected.codPeriodo}" >
+                            <f:selectItems value="#{periodoController.itemsAvailableSelectOne}"
+                                           var="codPeriodoItem"
+                                           itemValue="#{codPeriodoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{silabosController.create}" value="#{bundle.Save}" update="display,:SilabosListForm:datalist,:growl" oncomplete="handleSubmit(args,'SilabosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SilabosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

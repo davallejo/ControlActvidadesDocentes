@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>REGISTRE LA INFORMACIÓN DEL SILABO</h4>
+                      
+                        <h:form>
+                                 <div>
+                                    <table class="table table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th> <p:outputLabel value="SILABOS:"  /></th>
+                                                <th> <p:selectOneMenu id="Silabo" value="#{managedBeanSilabo.silaboObjeto}" required="true" >  
+                                                        <f:selectItem itemLabel="--Selecciones--" itemValue=""/>
+                                                        <f:selectItems value="#{managedBeanView.silabosLista}" var="Silabo"  itemValue="#{Silabo}" itemLabel="(#{Silabo.codPeriodo.anioInicio}-#{Silabo.codPeriodo.anioFin}) #{Silabo.codAsignatura.nombre}" />
+                                                    </p:selectOneMenu></th>
+ 
+                                            </tr>
+                                        </thead>
+                                    </table>     
+                                
+                                </div>
+                                      
+                            <p:fieldset>
+                                <p:outputLabel value="PERÍODO ACADÉMICO:"  />                    <br/>
+                                <div>
+                                    <table class="table table-responsive">
+                                        <thead>
+
+                                            <tr>
+                                                <th> <p:outputLabel value="PERÍODO ACADÉMICO:"  /></th>
+                                                <th> 
+                                                    <p:selectOneMenu id="Periodo" value="#{managedBeanSilabo.codPeriodoL}" required="true" >  
+                                                        <f:selectItem itemLabel="--Selecciones--" itemValue="" />
+                                                        <f:selectItems value="#{managedBeanView.listaPeriodo}" var="Periodo"  itemValue="#{Periodo}" itemLabel="#{Periodo.anioInicio}-#{Periodo.anioFin}"/>
+                                                    </p:selectOneMenu>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>  
+                                   
+                                    <table class="table table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th> <p:outputLabel value="ASIGNATURA:"  /></th>
+                                                <th> <p:selectOneMenu id="Asignatura" value="#{managedBeanSilabo.codAsignaturaL}" required="true" >  
+                                                        <f:selectItem itemLabel="--Selecciones--" itemValue=""/>
+                                                        <f:selectItems value="#{managedBeanView.pro}" var="Asignaturas"  itemValue="#{Asignaturas}" itemLabel="#{Asignaturas.nombre}" />
+                                                    </p:selectOneMenu></th>
+ 
+                                            </tr>
+                                        </thead>
+                                    </table>     
+                                
+                                </div>
+                                
+                                 <br/>
+                                <p:outputLabel value="NÚMERO DE HORAS DE CLASE:"  />                    <br/>
+
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel for="NHPresenciales" value="Nº Horas Presenciales:"/></th>
+                                        <th> <p:inputText pt:placeholder="#{managedBeanSilabo.nhPresencialesL}" id="NHPresenciales" styleClass="from-control" value="#{managedBeanSilabo.nhPresencialesL}" style="border: none" required="true"/></th>
+                                        <p:messages for="NHPresenciales" autoUpdate="true"/>
+                                        <th><p:outputLabel for="NHPracticas" value="Nº Horas Prácticas:"/></th>
+                                        <th> <p:inputText pt:placeholder="#{managedBeanSilabo.nhPracticasL}" id="NHPracticas" styleClass="from-control" value="#{managedBeanSilabo.nhPracticasL}" style="border: none" required="true" /></th>
+                                        <p:messages for="NHPracticas" autoUpdate="true"/>
+                                    </tr>   
+                                </table>
+                                <p:outputLabel value="NÚMERO DE HORAS TUTORÍA:"  />                    <br/>
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel for="NHPresencialesT" value="Nº Horas Presenciales:"/></th>
+                                        <th> <p:inputText pt:placeholder="Horas" id="NHPresencialesT" styleClass="from-control" value="#{managedBeanSilabo.nhtPresencialL}" style="border: none" required="true"/></th>
+                                        <p:messages for="NHPresencialesT" autoUpdate="true"/>
+                                    
+                                        <th><p:outputLabel for="NHVirtualesT" value="Nº Horas Virtuales:"/></th>
+                                        <th> <p:inputText pt:placeholder="Horas" id="NHVirtualesT" styleClass="from-control" value="#{managedBeanSilabo.nhtVirtualL}" style="border: none" required="true"/></th>
+                                        <p:messages for="NHVirtualesT" autoUpdate="true"/>
+                                    
+                                    </tr>   
+                                </table>
+
+                                <p:outputLabel value="EVALUACIÓN DEL ESTUDIANTE POR RESULTADOS DE ARENDIZAJE:"  />                    <br/>
+
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th>Técnicas</th>
+                                        <th>Primer Hemisemestre</th>
+                                        <th>Segundo Hemisemestre</th>
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="TEEP1" value="Evaluación escrita o práctica, parcial o final:"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TEEP1" styleClass="from-control" value="#{managedBeanSilabo.eval_practica_1hL}" style="border: none" required="true"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TEEP2" styleClass="from-control" value="#{managedBeanSilabo.eval_practica_2hL}" style="border: none" required="true"/></th>
+                                        <p:messages for="TEEP1" autoUpdate="true"/>
+                                        <p:messages for="TEEP2" autoUpdate="true"/>
+                                    
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="TAV1" value="Trabajo Autónomo y/o virtual(Controles de lectura,cursos virtuales):"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TAV1" styleClass="from-control" value="#{managedBeanSilabo.eval_autonomo_1hL}" style="border: none" required="true"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TAV2" styleClass="from-control" value="#{managedBeanSilabo.eval_autonomo_2hL}" style="border: none" required="true"/></th>
+                                        <p:messages for="TAV1" autoUpdate="true"/>
+                                        <p:messages for="TAV2" autoUpdate="true"/>
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="TAI1" value="Trabajo Individuales(Deberes):"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TAI1" styleClass="from-control" value="#{managedBeanSilabo.eval_trabajos_ind_1hL}" style="border: none" required="true"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TAI2" styleClass="from-control" value="#{managedBeanSilabo.eval_trabajos_ind_2hL}" style="border: none" required="true"/></th>
+                                        <p:messages for="TAI1" autoUpdate="true"/>
+                                        <p:messages for="TAI2" autoUpdate="true"/>
+                                    
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="TGE1" value="Trabajo Grupales(Exposiciones):"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TGE1" styleClass="from-control" value="#{managedBeanSilabo.eval_trabajos_grup_1hL}" style="border: none" required="true"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TGE2" styleClass="from-control" value="#{managedBeanSilabo.eval_trabajos_grup_2hL}" style="border: none" required="true"/></th>
+                                        <p:messages for="TGE1" autoUpdate="true"/>
+                                        <p:messages for="TGE2" autoUpdate="true"/>
+                                    
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="TIPT1" value="Trabajo integradores(Pares,Talleres):"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TIPT1" styleClass="from-control" value="#{managedBeanSilabo.eval_trabajos_inte_1hL}" style="border: none" required="true"/></th>
+                                        <th> <p:inputText pt:placeholder="puntos" id="TIPT2" styleClass="from-control" value="#{managedBeanSilabo.eval_trabajos_inte_2hL}" style="border: none" required="true"/></th>
+                                        <p:messages for="TIPT1" autoUpdate="true"/>
+                                        <p:messages for="TIPT2" autoUpdate="true"/>
+                                    
+                                    </tr>   
+
+                                </table><p:outputLabel value="INFORMACIÓN DEL DONCENTE:"  />                    <br/>
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel for="PAc" value="Perfil Académico:"/></th>
+                                        <th> <p:inputTextarea id="PAc" value="#{managedBeanSilabo.perfilDocenteL}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="PAc" autoUpdate="true"/>
+                                    
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="PPr" value="Perfil Profesional:"/></th>
+                                        <th> <p:inputTextarea id="PPr" value="#{managedBeanSilabo.perfilDocenteProfeL}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="PPr" autoUpdate="true"/>
+                                    
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="DPer" value="Descripción del Perfil:"/></th>
+                                        <th> <p:inputTextarea id="DPer" value="#{managedBeanSilabo.descripcionPerfilDocenteL}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="DPer" autoUpdate="true"/>
+                                    </tr>
+                                </table>
+
+                                <p:outputLabel value="BIBLIOGRAFÍA:"  />                    <br/>
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel for="BBL" value="BIBLIOGRAFÍA:"/></th>
+                                        <th> <p:inputTextarea id="BBL" value="#{managedBeanSilabo.bibliografiaL}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="BBL" autoUpdate="true"/>
+                                    
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="BBLV" value="BIBLIOGRAFÍA VIRTUAL:"/></th>
+                                        <th> <p:inputTextarea id="BBLV" value="#{managedBeanSilabo.bibliografiaVirtualL}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="BBLV" autoUpdate="true"/>
+                                    
+                                    </tr>
+                                    
+                                </table>
+
+                                
+                                <div class="row" style="margin-top: 70px">
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"  actionListener="#{managedBeanSilabo.reemplazarSilabo()}" action="redireccionSilabosEditado?faces-redirect=true" value="GUARDAR DATOS"/>
+                                    </div>
+                                </div>
+
+                            </p:fieldset> 
+                        </h:form>           
+
+
+                         <div class="row" style="margin-top: 70px">
+                                <p:commandLink action="opcionesCASM3?faces-redirect=true">
+                                    <h:outputText value="OPCIONES COORDINADOR" />
+                                </p:commandLink>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

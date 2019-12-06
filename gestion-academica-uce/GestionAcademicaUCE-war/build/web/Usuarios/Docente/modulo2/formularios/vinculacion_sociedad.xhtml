@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+        
+        <ui:composition template="../../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <!--CUEROPO-->
+                <div class="marco">
+                    <h4>REGISTRE LA INFORMACIÓN DE VINCULACION CON LA SOCIEDAD</h4>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h:form style="margin-top: 30px">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <table class="table table-responsive">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>FECHA</th>
+                                                            <th>HORARIO</th>
+                                                            <th>CURSO</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th><p:calendar disabled="true" pt:placeholder="SELECCIONE FECHA" styleClass="from-control"  value="#{cargarDatos.fecha}"  locale="es" /></th>
+                                                           <th>
+                                                                <h:selectOneMenu   value = "#{cargarDatos.hora}" class="form-control1 from-control" > 
+                                                                    <f:selectItems value="#{cargarDatos.horas}"  />
+                                                                </h:selectOneMenu> 
+                                                            </th>
+                                                            <th>
+                                                                <h:selectOneMenu  value = "#{cargarDatos.curso}" class="form-control1" > 
+                                                                    <f:selectItems   value="#{cargarDatos.cursosCodigos}" />
+                                                                </h:selectOneMenu> 
+                                                            </th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <table class="table table-responsive">
+                                            <thead>
+                                                <tr>
+                                                    <th>TEMA</th>
+                                                    <th>OBSERVACIÓN</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><p:inputText pt:placeholder="TEMA" styleClass="from-control" value="#{cargarDatos.tema}" style="border: none"  /></td>
+                                                    <td><p:inputText pt:placeholder="OBSERVACIÓN " styleClass="from-control" value="#{cargarDatos.observacion}" style="border: none"  /></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--                            <div class="col-md-3">
+                                                                    <p:calendar  pt:placeholder="SELECCIONE FECHA" styleClass="from-control pull-right "  value="#{cargarDatos.fecha}" />
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p:calendar pt:placeholder="SELECCIONE HORA" styleClass="from-control pull-right" pattern="HH:mm" timeOnly="true" value="#{cargarDatos.hora1}" />
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p:inputText pt:placeholder="CURSO" styleClass="from-control pull-right" value="#{cargarDatos.aula}"/>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p:inputText pt:placeholder="TEMA TRATADO" styleClass="from-control pull-right" value="#{cargarDatos.tema}" />
+                                                                </div>-->
+                                </div>
+                                <p:commandButton style="margin-top: 15px" styleClass="btn btn-info btn-block"  action="#{cargarDatos.guardarDatos(3)}"  value="GUARDAR"/>
+
+                            </h:form>
+                        </div>
+                    </div>  
+                    <h:form>
+                        <div class="row" style="margin-top: 70px">
+                            <h:form>
+                                <div class="col-md-4">
+                                    <h:commandButton action="#{cargarDatos.limpiarCampos()}" value="LIMPIAR" class="btn btn-block btn-default" />
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- 
+                                     <h:button value="IMPRIMIR REPORTE" class="btn btn-block btn-default" />
+                                    -->
+                                </div>
+                                <div class="col-md-4">
+                                    <h:commandButton value="REVISAR ENTRADAS" action="#{cargarDatos.RevisarEntradas(4)}"  class="btn btn-block btn-success" />
+                                </div>
+                            </h:form>
+                        </div>
+                    </h:form>
+                </div>
+
+               
+                <!--VENTANA MODAL-->
+                <button style="display: none" id="modal1" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    LOS DATOS SE GUARDARON CORRECTAMENTE
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form jsf:id="in">
+                                    <button jsf:action="#{cargarDatos.redireccion()}" type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span>
+                                        <f:ajax execute="@form" render="@form"  />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--VENTANA ERROR-->
+                <button style="display: none" id="modal2" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Open Modal</button>
+                <div id="myModal2" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    POR FAVOR LLENE LOS DATOS
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--VENTANA ERROR CEDULA-->
+                <button style="display: none" id="modal3" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Open Modal</button>
+                <div id="myModal3" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    POR FAVOR INGRESE UNA CEDULA DE ESTUDIANTE VALIDA
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+
+

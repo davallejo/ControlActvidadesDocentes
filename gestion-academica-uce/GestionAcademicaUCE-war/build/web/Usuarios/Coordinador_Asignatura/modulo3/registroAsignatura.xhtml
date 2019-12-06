@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>REGISTRE LA INFORMACIÓN DE LA ASIGNATURA</h4>
+
+                        <h:form>
+
+                            <p:fieldset>
+                                <div>
+                                    <table class="table table-responsive">
+                                        <thead>
+
+                                            <tr>
+                                                <th> <p:outputLabel value="ÁREA ACADÉMICA:"  /></th>
+                                                <th> 
+                                                    <p:selectOneMenu id="regAsigAreaAca" value="#{managedBeanTablas.codAreraAsignaturaTablas}" required="true" >  
+                                                        <f:selectItem itemLabel="--Selecciones--" itemValue="" />
+                                                        <f:selectItems value="#{managedBeanView.areaAcLt}" var="AreaAcademica"  itemValue="#{AreaAcademica}" itemLabel="#{AreaAcademica.nombre}"/>
+                                                    </p:selectOneMenu>
+                                                </th>
+
+                                                <th> <p:outputLabel value="CARRERA:"  /></th>
+                                                <th> 
+                                                    <p:selectOneMenu id="regASigCarrera" value="#{managedBeanTablas.codCarreraAsignaturaTablas}" required="true" >  
+                                                        <f:selectItem itemLabel="--Selecciones--" itemValue="" />
+                                                        <f:selectItems value="#{managedBeanView.carreraL}" var="Carrera"  itemValue="#{Carrera}" itemLabel="#{Carrera.nombre}"/>
+                                                    </p:selectOneMenu>
+                                                </th>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th> <p:outputLabel value="SEMESTRE:"  /></th>
+                                                <th> <p:selectOneMenu id="regAsigSemestreAsignatura" value="#{managedBeanTablas.codSemestreAsignaturaTablas}" required="true" >  
+                                                        <f:selectItem itemLabel="--Selecciones--" itemValue=""/>
+                                                        <f:selectItems value="#{managedBeanView.cursoLt}" var="Semestre"  itemValue="#{Semestre}" itemLabel="#{Semestre.nombre}" />
+                                                    </p:selectOneMenu></th>
+
+                                                <th><p:outputLabel for="regAsigCodAsig" value="CÓDIGO DE LA ASIGNATURA:"/></th>
+                                                <th> <p:inputText pt:placeholder="" id="regAsigCodAsig" styleClass="from-control" value="#{managedBeanTablas.codigoAsignaturaTablas}" style="border: none" required="true" /></th>
+                                                <p:messages for="regAsigCodAsig" autoUpdate="true"/>
+
+
+                                            </tr>
+
+                                            <tr>
+                                                <th><p:outputLabel for="regAsigNomAsig" value="NOMBRE DE LA ASIGNATURA:"/></th>
+                                                <th> <p:inputText pt:placeholder="" id="regAsigNomAsig" styleClass="from-control" value="#{managedBeanTablas.nombreAsignaturaTablas}" style="border: none" required="true"/></th>
+                                                <p:messages for="regAsigNomAsig" autoUpdate="true"/>
+                                                <th><p:outputLabel for="regASTipoAsig" value="TIPO DE ASIGNATURA:"/></th>
+                                                <th> <p:inputText pt:placeholder="" id="regASTipoAsig" styleClass="from-control" value="#{managedBeanTablas.tipoAsignaturaTablas}" style="border: none" required="true"/></th>
+                                                <p:messages for="regASTipoAsig" autoUpdate="true"/>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th><p:outputLabel for="regAsigcreAsig" value="CRÉDITOS:"/></th>
+                                                <th> <p:inputText pt:placeholder="" id="regAsigcreAsig" styleClass="from-control" value="#{managedBeanTablas.creditosAsignaturaTablas}" style="border: none" required="true"/></th>
+                                                <p:messages for="regAsigcreAsig" autoUpdate="true"/>
+                                                <th><p:outputLabel for="unCurr" value="UNIDAD CURRICULAR:"/></th>
+                                                <th> <p:inputText pt:placeholder="" id="unCurr" styleClass="from-control" value="#{managedBeanTablas.uniCurrAsignaturaTablas}" style="border: none" required="true" /></th>
+                                                <p:messages for="NHPracticas" autoUpdate="true"/>
+                                            </tr>
+
+                                        </thead>
+                                    </table>  
+
+
+                                </div>
+                                <br/>
+
+
+                                <table class="table table-responsive">
+
+                                </table>
+
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel for="regAsigDesc" value="DESCRIPCIÓN:"/></th>
+                                        <th> <p:inputTextarea id="regAsigDesc" value="#{managedBeanTablas.descripcionAsignaturaTablas}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="regAsigDesc" autoUpdate="true"/>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="regAsigObjet" value="OBJETIVO GENERAL:"/></th>
+                                        <th> <p:inputTextarea id="regAsigObjet" value="#{managedBeanTablas.objetivoGeneralAsigTablas}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="regAsigObjet" autoUpdate="true"/>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="regASigObEs" value="OBJETIVOS ESPECIFICO:"/></th>
+                                        <th> <p:inputTextarea id="regASigObEs" value="#{managedBeanTablas.objetivoEspecificoAsigTablas}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="regASigObEs" autoUpdate="true"/>
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="regAsiContrAsi" value="CONTRIBUCIÓN DE LA ASIGNATURA EN LA FORMACIÓN DEL PROFESIONAL:"/></th>
+                                        <th> <p:inputTextarea id="regAsiContrAsi" value="#{managedBeanTablas.contribucionFormacionAsigTablas}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="regAsiContrAsi" autoUpdate="true"/>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="regAsigResApAs" value="RESULTADOS DE APRENDIZAJE DE LA ASIGNATURA:"/></th>
+                                        <th> <p:inputTextarea id="regAsigResApAs" value="#{managedBeanTablas.resultadosAprendizajeAsignaturaTablas}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="regAsigResApAs" autoUpdate="true"/>
+                                    </tr>
+
+
+                                </table>
+
+                                <div class="row" style="margin-top: 70px">
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"  actionListener="#{managedBeanTablas.guardarAsignatura()}" action="registroAsignaturaRedireccion?faces-redirect=true" value="GUARDAR DATOS"/>
+                                    </div>
+                                </div>
+
+                            </p:fieldset> 
+
+                        </h:form>           
+
+                        <div class="row" style="margin-top: 70px">
+                            <div class="row" style="margin-top: 70px">
+                                <p:commandLink action="opcionesCASM3?faces-redirect=true">
+                                    <h:outputText value="OPCIONES COORDINADOR" />
+                                </p:commandLink>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

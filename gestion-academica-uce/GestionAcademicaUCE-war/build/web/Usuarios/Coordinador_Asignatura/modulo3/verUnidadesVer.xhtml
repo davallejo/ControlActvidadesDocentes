@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>UNIDADES CURRICULARES</h4>
+
+                        <h:form>
+                            <p:fieldset>
+
+                                <legend>DATOS INFORMATIVOS:</legend>  
+
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel  value="Nº DE LA UNIDAD:"/></th>
+                                        <th> <h5> #{managedBeanSilabo.unidadesObjeto.numeral} </h5></th>
+
+                                    </tr>
+
+                                    <tr>
+                                        <th><p:outputLabel value="NOMBRE DE LA UNIDAD:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.unidadesObjeto.nombre} </h5></th>
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel value="OBJETIVO:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.unidadesObjeto.objetivo}</h5></th>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel  value="RESULTADOS DE APRENDIZAJE:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.unidadesObjeto.resAprendizaje}</h5></th>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel value="METODOLOGÍA DE APRENDIZAJE:"/></th>
+                                        <th><h5>#{managedBeanSilabo.unidadesObjeto.metodologiaAprendizaje}</h5></th>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel  value="RECURSOS DIDÁCTICOS:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.unidadesObjeto.recursosDidactivos}</h5></th>
+
+                                    </tr>
+                                </table>
+
+                                <legend>CALCULO DE HORAS DE UNIDAD:</legend>           
+                                <br></br>
+
+                                <table class="table table-responsive">
+
+                                    <tr>
+                                        <th><p:outputLabel value="Nº Horas de Aprendizaje Teóricas:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.unidadesObjeto.nhAprendizajeTeorico}</h5></th>
+                                        <th><p:outputLabel value="Nº Horas de Aprendizaje Laboratorio:"/></th>
+                                        <th><h5>#{managedBeanSilabo.unidadesObjeto.nhPracticasLab}</h5></th>
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel value="Nº Horas de Tutoría Presenciales:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.unidadesObjeto.nhTutoriaPresencial}</h5></th>
+                                        <th><p:outputLabel value="Nº Horas de Aula Virtual:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.unidadesObjeto.nhTutoriasVirtual}</h5></th>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel  value="Nº Horas Trabajo Autónomo:"/></th>
+                                        <th> <h5>#{managedBeanSilabo.unidadesObjeto.nhTrabajoAutonomo}</h5></th>
+                                    </tr>   
+
+                                </table>        
+
+
+                                <div class="row" style="margin-top: 70px">
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"   action="listarUnidadesVerVer?faces-redirect=true" value="VER OTRA UNIDAD">
+                                        </h:commandButton>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"   action="verContenidoVer?faces-redirect=true" actionListener="#{managedBeanSilabo.listarLosContenidos()}"  value="VER CONTENIDO">
+                                        </h:commandButton>
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"   action="opcionesCASM3?faces-redirect=true" value="FINALIZAR">
+                                        </h:commandButton>
+
+                                    </div>
+                                </div>
+
+
+
+                            </p:fieldset> 
+                        </h:form>           
+                        <div class="row" style="margin-top: 70px">
+                            <p:commandLink action="opcionesCASM3?faces-redirect=true">
+                                <h:outputText value="OPCIONES COORDINADOR" />
+                            </p:commandLink>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

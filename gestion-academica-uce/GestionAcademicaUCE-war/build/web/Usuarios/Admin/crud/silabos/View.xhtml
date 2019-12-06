@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SilabosViewDlg" widgetVar="SilabosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSilabosTitle}">
+            <h:form id="SilabosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{silabosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSilabosLabel_id}"/>
+                        <h:outputText value="#{silabosController.selected.id}" title="#{bundle.ViewSilabosTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_nhPresencial}"/>
+                        <h:outputText value="#{silabosController.selected.nhPresencial}" title="#{bundle.ViewSilabosTitle_nhPresencial}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_nhPracticas}"/>
+                        <h:outputText value="#{silabosController.selected.nhPracticas}" title="#{bundle.ViewSilabosTitle_nhPracticas}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_nhtPresencial}"/>
+                        <h:outputText value="#{silabosController.selected.nhtPresencial}" title="#{bundle.ViewSilabosTitle_nhtPresencial}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_nhtVirtual}"/>
+                        <h:outputText value="#{silabosController.selected.nhtVirtual}" title="#{bundle.ViewSilabosTitle_nhtVirtual}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_perfilDocenteAcadem}"/>
+                        <h:outputText value="#{silabosController.selected.perfilDocenteAcadem}" title="#{bundle.ViewSilabosTitle_perfilDocenteAcadem}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_perfilDocenteProf}"/>
+                        <h:outputText value="#{silabosController.selected.perfilDocenteProf}" title="#{bundle.ViewSilabosTitle_perfilDocenteProf}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_descripPerfilDocente}"/>
+                        <h:outputText value="#{silabosController.selected.descripPerfilDocente}" title="#{bundle.ViewSilabosTitle_descripPerfilDocente}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_vigente}"/>
+                        <p:selectBooleanCheckbox value="#{silabosController.selected.vigente}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_observaciones}"/>
+                        <h:outputText value="#{silabosController.selected.observaciones}" title="#{bundle.ViewSilabosTitle_observaciones}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_revisionCa}"/>
+                        <p:selectBooleanCheckbox value="#{silabosController.selected.revisionCa}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_revisionDc}"/>
+                        <p:selectBooleanCheckbox value="#{silabosController.selected.revisionDc}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_aprobado}"/>
+                        <p:selectBooleanCheckbox value="#{silabosController.selected.aprobado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_fechaElaboracion}"/>
+                        <h:outputText value="#{silabosController.selected.fechaElaboracion}" title="#{bundle.ViewSilabosTitle_fechaElaboracion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_fechaRevision}"/>
+                        <h:outputText value="#{silabosController.selected.fechaRevision}" title="#{bundle.ViewSilabosTitle_fechaRevision}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_fechaAprobacion}"/>
+                        <h:outputText value="#{silabosController.selected.fechaAprobacion}" title="#{bundle.ViewSilabosTitle_fechaAprobacion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_revisionDocentes}"/>
+                        <p:selectBooleanCheckbox value="#{silabosController.selected.revisionDocentes}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalPractica1h}"/>
+                        <h:outputText value="#{silabosController.selected.evalPractica1h}" title="#{bundle.ViewSilabosTitle_evalPractica1h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalPractica2h}"/>
+                        <h:outputText value="#{silabosController.selected.evalPractica2h}" title="#{bundle.ViewSilabosTitle_evalPractica2h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalAutonomo1h}"/>
+                        <h:outputText value="#{silabosController.selected.evalAutonomo1h}" title="#{bundle.ViewSilabosTitle_evalAutonomo1h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalAutonomo2h}"/>
+                        <h:outputText value="#{silabosController.selected.evalAutonomo2h}" title="#{bundle.ViewSilabosTitle_evalAutonomo2h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalTrabajosInd1h}"/>
+                        <h:outputText value="#{silabosController.selected.evalTrabajosInd1h}" title="#{bundle.ViewSilabosTitle_evalTrabajosInd1h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalTrabajosInd2h}"/>
+                        <h:outputText value="#{silabosController.selected.evalTrabajosInd2h}" title="#{bundle.ViewSilabosTitle_evalTrabajosInd2h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalTrabajosIntegrador1h}"/>
+                        <h:outputText value="#{silabosController.selected.evalTrabajosIntegrador1h}" title="#{bundle.ViewSilabosTitle_evalTrabajosIntegrador1h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalTrabajosIntegrador2h}"/>
+                        <h:outputText value="#{silabosController.selected.evalTrabajosIntegrador2h}" title="#{bundle.ViewSilabosTitle_evalTrabajosIntegrador2h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalTrabajosGrup1h}"/>
+                        <h:outputText value="#{silabosController.selected.evalTrabajosGrup1h}" title="#{bundle.ViewSilabosTitle_evalTrabajosGrup1h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_evalTrabajosGrup2h}"/>
+                        <h:outputText value="#{silabosController.selected.evalTrabajosGrup2h}" title="#{bundle.ViewSilabosTitle_evalTrabajosGrup2h}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_codAsignatura}"/>
+                        <h:outputText value="#{silabosController.selected.codAsignatura}" title="#{bundle.ViewSilabosTitle_codAsignatura}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_codEvaluacion}"/>
+                        <h:outputText value="#{silabosController.selected.codEvaluacion}" title="#{bundle.ViewSilabosTitle_codEvaluacion}"/>
+                        <h:outputText value="#{bundle.ViewSilabosLabel_codPeriodo}"/>
+                        <h:outputText value="#{silabosController.selected.codPeriodo}" title="#{bundle.ViewSilabosTitle_codPeriodo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SilabosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

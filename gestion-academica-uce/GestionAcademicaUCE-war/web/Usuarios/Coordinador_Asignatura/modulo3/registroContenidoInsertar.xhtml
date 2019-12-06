@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>REGISTRO DE CONTENIDO</h4>
+
+                        <h:form>
+                            <p:fieldset>
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel for="NUMDCont" value="Nº DEL CONTENIDO:"/></th>
+                                        <th> <p:inputText value="#{managedBeanSilabo.contNItemNuevo}" id="NUMDCont" required="true" /></th>
+                                        <p:messages for="NUMDCont" autoUpdate="true"/>
+
+                                    </tr>
+
+                                    <tr>
+                                        <th><p:outputLabel for="NomUN" value="NOMBRE:"/></th>
+                                        <th> <p:inputTextarea value="#{managedBeanSilabo.contNomDescNuevo}" id="NomUN" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="NomUN" autoUpdate="true"/>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="ActTrAu" value="ACTIVIDADES DE TRABAJO AUTÓNOMO, INVESTIGACIÓN Y VINCULACIÓN CON LA SOCIEDAD:"/></th>
+                                        <th> <p:inputTextarea value="#{managedBeanSilabo.contActividadesNuevo}" id="ActTrAu" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="ActTrAu" autoUpdate="true"/>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="MecEv" value="MECANISMO DE EVALUACIÓN:"/></th>
+                                        <th> <p:inputTextarea value="#{managedBeanSilabo.contMecEvNuevo}" id="MecEv" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="MecEv" autoUpdate="true"/>
+
+                                    </tr>
+                                </table>
+
+                                <div class="row" style="margin-top: 70px">
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"  actionListener="#{managedBeanSilabo.guardarContenidoNuevoEdicion()}" action="registroContenidoInsertarRedireccion?faces-redirect=true" value="GUARDAR CONTENIDO"/>
+                                    </div>
+                                </div>
+
+
+                            </p:fieldset> 
+                        </h:form>           
+
+
+
+
+                    </div>
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+        
+        <ui:composition template="../../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+             
+ <!--CUEROPO-->
+        <div class="marco">
+            <h4>REGISTRE LA INFORMACIÓN DE INVESTIGACIÓN</h4>
+            <!--            <h:form>
+                            <h5>DOCENTE:   <h:outputLabel value="#{login.usuario.apellidoP}"/>-<h:outputLabel value="#{login.usuario.nombreP}"/></h5>
+                        </h:form>-->
+            <div class="row">
+                <p>
+                    <br/>
+                    <br/>
+                    POR FAVOR SELECCIONE LA EVIDENCIA DEL TRABAJO EN FORMATO PDF O JPG Y PRESIONE GUARDAR Y TERMINAR PARA GUARDAR LA INFORMACIÓN
+                </p>
+                <div class="col-md-12">
+                    <h:form enctype="multipart/form-data">
+                        <p:fileUpload  label="EXPLORAR Y BUSCAR" uploadLabel="GUARDAR Y TERMINAR" cancelLabel="CANCELAR OPERACIÓN" fileUploadListener="#{cargarDatos.handleFileUpload}" mode="advanced" dragDropSupport="true"
+                                       multiple="true"  sizeLimit="1000000000" fileLimit="3" allowTypes="/(\.|\/)(pdf|jpg|png|jpeg)$/" />
+                    </h:form>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 70px">
+                <div class="col-md-4">
+                    <h:form>
+                       <h:commandButton value="Guardar Sin Evidencia"  action="#{cargarDatos.guardarInvestigacion(2)}" class= " btn btn-block btn-primary " />
+                    </h:form>
+                </div>
+                <div class="col-md-4">
+                    <!--
+                    <h:button value="IMPRIMIR REPORTE" class="btn btn-block btn-default" />
+                    -->
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <!--PIE-->
+        <!--        <ui:include src = "pie.html" />-->
+
+        <button style="display: none" id="modal1" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                        <h4 class="modal-title text-success">MENSAJE.</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-justify text-primary">
+                            LOS DATOS SE GUARDARON CORRECTAMENTE
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <form jsf:id="in">
+                            <button jsf:action="#{cargarDatos.redireccion1()}" type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span>
+                                <f:ajax execute="@form" render="@form"  />
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+

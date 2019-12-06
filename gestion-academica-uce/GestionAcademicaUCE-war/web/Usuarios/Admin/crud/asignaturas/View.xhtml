@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsignaturasViewDlg" widgetVar="AsignaturasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAsignaturasTitle}">
+            <h:form id="AsignaturasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asignaturasController.selected != null}">
+                        
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_nombre}"/>
+                        <h:outputText value="#{asignaturasController.selected.nombre}" title="#{bundle.ViewAsignaturasTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_codigo}"/>
+                        <h:outputText value="#{asignaturasController.selected.codigo}" title="#{bundle.ViewAsignaturasTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_creditos}"/>
+                        <h:outputText value="#{asignaturasController.selected.creditos}" title="#{bundle.ViewAsignaturasTitle_creditos}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_unidadCurricular}"/>
+                        <h:outputText value="#{asignaturasController.selected.unidadCurricular}" title="#{bundle.ViewAsignaturasTitle_unidadCurricular}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_tipoAsignatura}"/>
+                        <h:outputText value="#{asignaturasController.selected.tipoAsignatura}" title="#{bundle.ViewAsignaturasTitle_tipoAsignatura}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_descripcion}"/>
+                        <h:outputText value="#{asignaturasController.selected.descripcion}" title="#{bundle.ViewAsignaturasTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_objetivoGeneral}"/>
+                        <h:outputText value="#{asignaturasController.selected.objetivoGeneral}" title="#{bundle.ViewAsignaturasTitle_objetivoGeneral}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_objetivosEspecificos}"/>
+                        <h:outputText value="#{asignaturasController.selected.objetivosEspecificos}" title="#{bundle.ViewAsignaturasTitle_objetivosEspecificos}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_contribucionFormacionProf}"/>
+                        <h:outputText value="#{asignaturasController.selected.contribucionFormacionProf}" title="#{bundle.ViewAsignaturasTitle_contribucionFormacionProf}"/>
+                        <h:outputText value="#{bundle.ViewAsignaturasLabel_resultadosAprendizaje}"/>
+                        <h:outputText value="#{asignaturasController.selected.resultadosAprendizaje}" title="#{bundle.ViewAsignaturasTitle_resultadosAprendizaje}"/>
+                        
+                        <h:outputText value="Area"/>
+                        <h:outputText value="#{asignaturasController.selected.codArea.nombre}" title="#{bundle.ViewAsignaturasTitle_codArea}"/>
+                        <h:outputText value="Carrera"/>
+                        <h:outputText value="#{asignaturasController.selected.codCarrera.nombre}" title="#{bundle.ViewAsignaturasTitle_codCarrera}"/>
+                        <h:outputText value="Semestre"/>
+                        <h:outputText value="#{asignaturasController.selected.codSemestre.nombre}" title="#{bundle.ViewAsignaturasTitle_codSemestre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PF('AsignaturasViewDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

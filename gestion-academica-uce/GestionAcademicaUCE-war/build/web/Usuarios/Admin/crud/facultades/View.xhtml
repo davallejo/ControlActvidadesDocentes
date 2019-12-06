@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacultadesViewDlg" widgetVar="FacultadesViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFacultadesTitle}">
+            <h:form id="FacultadesViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facultadesController.selected != null}">
+                        
+                        <h:outputText value="#{bundle.ViewFacultadesLabel_nombre}"/>
+                        <h:outputText value="#{facultadesController.selected.nombre}" title="#{bundle.ViewFacultadesTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewFacultadesLabel_mision}"/>
+                        <h:outputText value="#{facultadesController.selected.mision}" title="#{bundle.ViewFacultadesTitle_mision}"/>
+                        <h:outputText value="#{bundle.ViewFacultadesLabel_vision}"/>
+                        <h:outputText value="#{facultadesController.selected.vision}" title="#{bundle.ViewFacultadesTitle_vision}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PF('FacultadesViewDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

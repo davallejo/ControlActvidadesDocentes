@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="Usuarios/Docente/NotificacionesDocente.xhtml" x="400" y="1650" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo4/formularios/pie.html" x="150" y="750" zoom="true"/>
+        <Node id="Usuarios/Administrativo/admin-pages/insertar_configuracion_horas.xhtml" x="1650" y="750" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/cabezera.html" x="400" y="300" zoom="true"/>
+        <Node id="restringido.xhtml" x="2150" y="150" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registroSilabo.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/tutorias_academicas.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo3/validarSilabo.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="Usuarios/Administrativo/admin-pages/configuracion.xhtml" x="400" y="1200" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registro_silabo.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="Usuarios/Administrativo/admin-pages/entradas.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registroAsignatura.xhtml" x="1150" y="1050" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/registros_semestre_idc.xhtml" x="1150" y="900" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/cargare_evidencia_vinculacion.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="Usuarios/Director/modulo1/horario.xhtml" x="1400" y="1050" zoom="true"/>
+        <Node id="Usuarios/Director/modulo4/solicitudAr.xhtml" x="1650" y="450" zoom="true"/>
+        <Node id="Usuarios/Director/modulo4/asignarCoordinadores.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo4/reunionA1.xhtml" x="1400" y="900" zoom="true"/>
+        <Node id="Usuarios/Director/modulo1/cargaExcel.xhtml" x="400" y="1350" zoom="true"/>
+        <Node id="Usuarios/Administrativo/home.xhtml" x="2400" y="150" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Area/modulo4/SolicitudAs.xhtml" x="1900" y="150" zoom="true"/>
+        <Node id="index.xhtml" x="150" y="1500" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/tutorias_proyecto_investigacion.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo4/reporteA1.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/registrar_docente_mt.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="Usuarios/Director/modulo3/validarSilabo.xhtml" x="2400" y="450" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo3/planClase.xhtml" x="650" y="900" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/entradas.xhtml" x="1650" y="900" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo4/acta1.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="Usuarios/Docente/home.xhtml" x="900" y="1050" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/investigacion.xhtml" x="2400" y="300" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registroCarrera.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/preparacion_examenes.xhtml" x="1900" y="600" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo4/tareasCooAs.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Area/modulo4/acta.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/actividades_titulacion.xhtml" x="900" y="1200" zoom="true"/>
+        <Node id="Usuarios/Director/modulo4/asignar_coordinador_asignatura.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="Usuarios/Estudiante/NotificacionesEstudiante.xhtml" x="2150" y="600" zoom="true"/>
+        <Node id="Usuarios/Administrativo/admin-pages/portal-admin.xhtml" x="1900" y="300" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/opcionesCASM3.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="Usuarios/Director/modulo3/opcionesDRM3.xhtml" x="1150" y="1200" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registroSemestre.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registroContenido.xhtml" x="650" y="1500" zoom="true"/>
+        <Node id="Usuarios/Administrativo/admin-pages/detalle_entrada.xhtml" x="900" y="900" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/registrar_docente_tc.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="Usuarios/Administrativo/admin-pages/crear_usuario.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="Usuarios/Administrativo/admin-pages/imprimir-reporte.xhtml" x="2150" y="300" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/vinculacion_sociedad.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="Usuarios/Director/modulo3/seguimientoSilaboDR.xhtml" x="2650" y="150" zoom="true"/>
+        <Node id="Usuarios/Estudiante/home.xhtml" x="900" y="1350" zoom="true"/>
+        <Node id="Usuarios/Estudiante/modulo3/seguimientoSilaboEs.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo3/opcionesDM3.xhtml" x="900" y="600" zoom="true"/>
+        <Node id="Usuarios/Administrativo/modulo1/horario.xhtml" x="900" y="750" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/home.xhtml" x="2900" y="150" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/gestion_academica.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="Usuarios/Director/home.xhtml" x="150" y="1200" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registroFacultades.xhtml" x="400" y="1050" zoom="true"/>
+        <Node id="Plantillas/plantilla.xhtml" x="1150" y="750" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo3/seguimientoSilabo.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/detalle_entrada.xhtml" x="1400" y="600" zoom="true"/>
+        <Node id="Usuarios/Estudiante/modulo3/opcionesEM3.xhtml" x="400" y="1500" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/registrar_docente_tp.xhtml" x="650" y="1350" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Area/modulo4/reunionA.xhtml" x="150" y="1350" zoom="true"/>
+        <Node id="Usuarios/Administrativo/admin-pages/exito_creacion_usuario.xhtml" x="150" y="1650" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Area/home.xhtml" x="1650" y="600" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/preparacion_clases.xhtml" x="650" y="1050" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Area/modulo4/reporteA.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="Usuarios/Director/modulo4/asignar_coordinador_area.xhtml" x="1400" y="750" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo4/solicitudAr1.xhtml" x="150" y="1050" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo3/listarMaterias.xhtml" x="1900" y="750" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/pie.html" x="2650" y="300" zoom="true"/>
+        <Node id="Usuarios/Docente/modulo2/formularios/imparticion_de_clases.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="Usuarios/Director/modulo1/opcionReporte.xhtml" x="150" y="1800" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registroUnidades.xhtml" x="1900" y="450" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Asignatura/modulo3/registroAreasAcademicas.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="Usuarios/Coordinador_Area/modulo4/tareasCooAr.xhtml" x="2150" y="450" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

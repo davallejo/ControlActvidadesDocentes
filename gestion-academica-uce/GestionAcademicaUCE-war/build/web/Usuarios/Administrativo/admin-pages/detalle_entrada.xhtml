@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:body>
+        
+        <ui:composition template="../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <h4>DETALLE CARGA HORARIA SELECCIONADA  </h4>
+
+                    <div class="row">
+                        <h:form>
+                            <div class="row" style="margin-top: 50px;">
+
+                                <div class="col-md-12">
+                                    <p:dataTable id="multipleDT" var="det" value="#{cargarDatos.detalles_carga}">
+    
+                                        <f:facet name="header">
+                                            DETALLE
+                                        </f:facet>
+                                        <p:column headerText="Materia">
+                                            <p:cellEditor>
+                                                <f:facet name="output"><h:outputText value="#{det.codMateria.nombre}" /></f:facet>
+                                                <f:facet name="input">
+                                                    <h:selectOneMenu value="#{det.codMateria.nombre}" style="width:100%">
+                                                        <f:selectItems value="#{cargarDatos.asignaturas}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+                                                    </h:selectOneMenu>
+                                                </f:facet>
+                                            </p:cellEditor>
+                                        </p:column>
+                                        <p:column headerText="Aula" visible="true" >
+                                            <h:outputText value="#{det.codAula.nomenclatura}" />
+                                        </p:column>
+                                        <p:column headerText="CI Estudiante" visible="true" >
+                                            <h:outputText value="#{det.codEstudiante.id}" />
+                                        </p:column>
+                                        <p:column headerText="Actividad" visible="true" >
+                                            <p:cellEditor>
+                                                <f:facet name="output"><h:outputText value="#{det.actividad}" /></f:facet>
+                                                <f:facet name="input"><p:inputText id="modelInput" value="#{det.actividad}" style="width:100%"/></f:facet>
+                                            </p:cellEditor>
+                                        </p:column>
+                                        <p:column headerText="Proyecto" visible="true" >
+                                            <h:outputText value="#{det.codProyecto.nombre}" />
+                                        </p:column>
+                                        <p:column headerText="Evidencia" visible="true" >
+                                            <h:outputText value="#{det.evidencia}" />
+                                        </p:column>
+                                        <p:column headerText="Tutor" visible="true" >
+                                            <h:outputText value="#{det.tutor}" />
+                                        </p:column>
+                                        <p:column headerText="Observación " visible="true" >
+                                            <h:outputText value="#{det.observacion}" />
+                                        </p:column>
+           
+                                    </p:dataTable>
+                                </div>
+                            </div>
+                            
+                            <h:commandLink value="REPORTE CARGA">
+                                <p:graphicImage name="../../../resources/imagenes/pdf.png" />
+                                <p:dataExporter type="pdf" target="multipleDT" fileName="Carga Horaria" pageOnly="true" />
+                            </h:commandLink>
+                        </h:form>
+                    </div>   
+
+
+
+                    <div class="row" style="margin-top: 70px">
+                        <h:form>
+                            <div class="col-md-4">
+                                <h:commandButton action="#{cargarDatos.limpiarCampos()}" value="LIMPIAR" class="btn btn-block btn-default" />
+                            </div>
+                            <div class="col-md-4">
+                                <!-- 
+                                 <h:button value="IMPRIMIR REPORTE" class="btn btn-block btn-default" />
+                                -->
+                            </div>
+                            <div class="col-md-4">
+                                <h:commandButton value="AGREGAR" action="#{cargarDatos.agregar()}"  class="btn btn-block btn-success" />
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+
+                <!--VENTANA MODAL-->
+                <button style="display: none" id="modal1" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
+                                <h4 class="modal-title text-success">MENSAJE.</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-justify text-primary">
+                                    LOS DATOS SE GUARDARON CORRECTAMENTE
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <form jsf:id="in">
+                                    <button jsf:action="#{cargarDatos.redireccion()}" type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-thumbs-up"></span>
+                                        <f:ajax execute="@form" render="@form"  />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>
+
+
+

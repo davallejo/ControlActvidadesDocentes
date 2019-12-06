@@ -1,0 +1,2 @@
+controladores.DetalleInformeAsignaturaController
+controladores.DetalleInformeAsignaturaController$DetalleInformeAsignaturaControllerConverter

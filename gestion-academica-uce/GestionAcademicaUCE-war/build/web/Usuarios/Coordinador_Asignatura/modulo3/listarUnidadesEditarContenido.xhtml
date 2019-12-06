@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>ELEGIR UNIDAD DEL SILABO</h4>
+                      
+                        <h:form>
+                                       
+                            <p:fieldset>
+                                 <div>
+                                    <table class="table table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th> <p:outputLabel value="UNIDADES:"  /></th>
+                                                <th> <p:selectOneMenu id="Silabo" value="#{managedBeanSilabo.unidadesObjeto}" required="true" >  
+                                                        <f:selectItem itemLabel="--Selecciones--" itemValue=""/>
+                                                        <f:selectItems value="#{managedBeanSilabo.listaUnidades}" var="Unidades"  itemValue="#{Unidades}" itemLabel="#{Unidades.numeral} ._ #{Unidades.nombre}" />
+                                                    </p:selectOneMenu></th>
+ 
+                                            </tr>
+                                        </thead>
+                                    </table>     
+                                
+                                </div>
+                                
+                               <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block" actionListener="#{managedBeanSilabo.listarLosContenidos()}"  action="verContenidoEditar?faces-redirect=true" value="ESCOGER UNIDAD"/>
+                                    </div>
+
+                            </p:fieldset> 
+                        </h:form>           
+
+
+                         <div class="row" style="margin-top: 70px">
+                                <p:commandLink action="opcionesCASM3?faces-redirect=true">
+                                    <h:outputText value="OPCIONES COORDINADOR" />
+                                </p:commandLink>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

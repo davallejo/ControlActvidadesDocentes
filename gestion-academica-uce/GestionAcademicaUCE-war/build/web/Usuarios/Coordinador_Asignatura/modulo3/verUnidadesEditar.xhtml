@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--CUEROPO-->
+                    <div class="marco">
+                        <h4>MODIFICAR UNIDADES CURRICULARES</h4>
+
+                        <h:form>
+                            <p:fieldset>
+
+                                <legend>DATOS INFORMATIVOS:</legend>  
+
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <th><p:outputLabel for="NDU" value="Nº DE LA UNIDAD:"/></th>
+                                        <th> <p:inputText pt:placeholder="1" id="NDU" value="#{managedBeanSilabo.unidadesObjeto.numeral}" required="true"/></th>
+                                        <p:messages for="NDU" autoUpdate="true"/>
+
+                                    </tr>
+
+                                    <tr>
+                                        <th><p:outputLabel for="NoDU" value="NOMBRE DE LA UNIDAD:"/></th>
+                                        <th> <p:inputTextarea value="#{managedBeanSilabo.unidadesObjeto.nombre}" id="NoDU" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="NoDU" autoUpdate="true"/>
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="Obj" value="OBJETIVO:"/></th>
+                                        <th> <p:inputTextarea id="Obj" value="#{managedBeanSilabo.unidadesObjeto.objetivo}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="Obj" autoUpdate="true"/>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="RDAp" value="RESULTADOS DE APRENDIZAJE:"/></th>
+                                        <th> <p:inputTextarea id="RDAp" value="#{managedBeanSilabo.unidadesObjeto.resAprendizaje}" rows="7" cols="60" required="true" /></th>
+                                        <p:messages for="RDAp" autoUpdate="true"/>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="MDAp" value="METODOLOGÍA DE APRENDIZAJE:"/></th>
+                                        <th> <p:inputTextarea id="MDAp" value="#{managedBeanSilabo.unidadesObjeto.metodologiaAprendizaje}" rows="7" cols="60" required="true" /></th>
+                                        <p:messages for="MDAp" autoUpdate="true"/>
+
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="REcD" value="RECURSOS DIDÁCTICOS:"/></th>
+                                        <th> <p:inputTextarea id="REcD" value="#{managedBeanSilabo.unidadesObjeto.recursosDidactivos}" rows="7" cols="60" required="true"/></th>
+                                        <p:messages for="REcD" autoUpdate="true"/>
+
+                                    </tr>
+                                </table>
+
+                                <legend>CALCULO DE HORAS DE UNIDAD:</legend>           
+                                <br></br>
+
+                                <table class="table table-responsive">
+
+                                    <tr>
+                                        <th><p:outputLabel for="NuHATe" value="Nº Horas de Aprendizaje Teóricas:"/></th>
+                                        <th> <p:inputText pt:placeholder="Horas" id="NuHATe" styleClass="from-control" value="#{managedBeanSilabo.unidadesObjeto.nhAprendizajeTeorico}" style="border: none" required="true" maxlength="2" /></th>
+                                        <th><p:outputLabel for="NuMHAL" value="Nº Horas de Aprendizaje Laboratorio:"/></th>
+                                        <th> <p:inputText pt:placeholder="Horas" id="NuMHAL" styleClass="from-control" value="#{managedBeanSilabo.unidadesObjeto.nhPracticasLab}" style="border: none" required="true" maxlength="2"/></th>
+                                        <p:messages for="NuHATe" autoUpdate="true"/>
+                                        <p:messages for="NuMHAL" autoUpdate="true"/>
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="NumHTP" value="Nº Horas de Tutoría Presenciales:"/></th>
+                                        <th> <p:inputText pt:placeholder="Horas" id="NumHTP" styleClass="from-control" value="#{managedBeanSilabo.unidadesObjeto.nhTutoriaPresencial}" style="border: none" required="true" maxlength="2"/></th>
+                                        <th><p:outputLabel for="NumHAV" value="Nº Horas de Aula Virtual:"/></th>
+                                        <th> <p:inputText pt:placeholder="Horas" id="NumHAV" styleClass="from-control" value="#{managedBeanSilabo.unidadesObjeto.nhTutoriasVirtual}" style="border: none" required="true" maxlength="2"/></th>
+                                        <p:messages for="NumHTP" autoUpdate="true"/>
+                                        <p:messages for="NumHAV" autoUpdate="true"/>
+                                    </tr>
+                                    <tr>
+                                        <th><p:outputLabel for="NumHTA" value="Nº Horas Trabajo Autónomo:"/></th>
+                                        <th> <p:inputText pt:placeholder="Horas" id="NumHTA" styleClass="from-control" value="#{managedBeanSilabo.unidadesObjeto.nhTrabajoAutonomo}" style="border: none" required="true" maxlength="2" /></th>
+                                        <p:messages for="NumHTA" autoUpdate="true"/>
+                                    </tr>   
+
+                                </table>        
+
+
+                                <div class="row" style="margin-top: 70px">
+                                    <div class="col-md-4">
+                                        <h:commandButton styleClass="btn btn-info btn-block"  actionListener="#{managedBeanSilabo.reemplazarUnidades()}" action="redireccionUnidadEditada?faces-redirect=true" value="GUARDAR UNIDAD">
+                                            <!--<f:actionListener binding="#{managedBeanSilabo.nuevoContenido()}" />-->
+                                        </h:commandButton>
+
+                                    </div>
+                                </div>
+
+
+
+                            </p:fieldset> 
+                        </h:form>           
+                        <div class="row" style="margin-top: 70px">
+                            <p:commandLink action="opcionesCASM3?faces-redirect=true">
+                                <h:outputText value="OPCIONES COORDINADOR" />
+                            </p:commandLink>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+        
+        <ui:composition template="../../../Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <h4>¿QUE DESEA REGISTRAR?</h4>
+                    <div class="row">
+                        <div class="col-md-6">  
+                            <h3>ATENCIÓN </h3>
+                            <p>USTED ES UN PROFESOR DE TIEMPO COMPLETO POR LO QUE DEBE LLENAR LA SIGUIENTE INFORMACIÓN </p>
+
+                            <h4>INDICACIONES:</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item">1.ELEGIR LA INFORMACIÓN QUE DESEA LLENAR.</li>
+                                <li class="list-group-item">2.LLENAR INFORMACIÓN.</li> 
+                                <li class="list-group-item">3.DAR GUARDAR.</li>
+                                <li class="list-group-item">4.VOLVER Y LLENAR OTRA ENTRADA O SALIR.</li> 
+                            </ul>
+                             
+                        </div>
+                        <div class="col-md-5">
+                            <h:form>
+                                
+                                <h:commandButton  action="#{cargarDatos.direccionarAVista(2)}"  styleClass="btn btn-default btn-block " value="INVESTIGACIÓN"/>
+                                <h:commandButton  action="#{cargarDatos.direccionarAVista(3)}"  styleClass="btn btn-default btn-block " value="VINCULACIÓN CON LA SOCIEDAD"/>
+                                <h:commandButton  action="#{cargarDatos.direccionarAVista(4)}"  styleClass="btn btn-default btn-block " value="PREPARACIÓN DE CLASES"/>
+                                <h:commandButton  action="#{cargarDatos.direccionarAVista(5)}"  styleClass="btn btn-default btn-block " value="PREPARACIÓN DE EXÁMENES"/>
+                                <h:commandButton  action="#{cargarDatos.direccionarAVista(6)}"  styleClass="btn btn-default btn-block " value="TUTORÍAS ACADÉMICAS"/>
+                                <h:commandButton  action="#{cargarDatos.direccionarAVista(7)}"  styleClass="btn btn-default btn-block " value="ACTIVIDADES DE TITULACIÓN"/>
+                                <h:commandButton  action="#{cargarDatos.direccionarAVista(8)}"  styleClass="btn btn-default btn-block " value="TUTORÍAS DE PROYECTOS DE INVESTIGACIÓN"/>
+                                <h:commandButton  action="#{cargarDatos.direccionarAVista(9)}"  styleClass="btn btn-default btn-block " value="GESTIÓN ACADÉMICA"/> 
+                            </h:form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

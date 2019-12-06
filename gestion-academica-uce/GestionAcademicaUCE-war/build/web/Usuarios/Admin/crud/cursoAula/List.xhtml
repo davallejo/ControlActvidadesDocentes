@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/Plantillas/plantilla.xhtml">
+
+
+        <ui:define name="content">
+
+            <div class="marco">
+                <div class="row">
+                    <h1>ASIGNACION DE CURSO CON AULA</h1>
+                    <p:growl id="growl" life="3000" />        
+                    <h:form id="CursoAulaListForm">
+                        <p:panel header="#{bundle.ListCursoAulaTitle}">
+                            <p:dataTable id="datalist" value="#{cursoAulaController.items}" var="item"
+                                         selectionMode="single" selection="#{cursoAulaController.selected}"
+                                         paginator="true"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         >
+
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListCursoAulaTitle_nomenclatura}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nomenclatura}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListCursoAulaTitle_aula}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.aula}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListCursoAulaTitle_periodo}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.periodo}"/>
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cursoAulaController.prepareCreate}" update=":CursoAulaCreateForm" oncomplete="PF('CursoAulaCreateDialog').show()"/>
+                                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CursoAulaViewForm" oncomplete="PF('CursoAulaViewDialog').show()" disabled="#{empty cursoAulaController.selected}"/>
+                                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CursoAulaEditForm" oncomplete="PF('CursoAulaEditDialog').show()" disabled="#{empty cursoAulaController.selected}"/>
+                                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cursoAulaController.destroy}" update=":growl,datalist" disabled="#{empty cursoAulaController.selected}"/>
+                                </f:facet>
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </div>
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

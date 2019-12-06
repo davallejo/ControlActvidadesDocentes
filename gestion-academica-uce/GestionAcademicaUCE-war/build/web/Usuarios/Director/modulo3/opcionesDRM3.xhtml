@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+<!--                    <h:form>
+                        <h5>USUARIO:  <h:outputLabel value="#{login.usuario.apellidoP} #{login.usuario.nombreP}"/></h5>
+                    </h:form>-->
+
+                    <h1>OPCIONES DEL DIRECTOR DE CARRERA - MODULO 3</h1>
+                    <h4>¿QUE DESEA REALIZAR?</h4>
+                    <div class="row">
+                        <div class="col-md-6">  
+                            <h3>ATENCIÓN </h3>
+                            <p>USTED ES UN DIRECTOR DE CARRERA, ESTAS SON SUS TAREAS DISPONIBLES PARA SEGUIMIENTO DE SILABO </p>
+
+                            <h4>INDICACIONES:</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item">1.ELEGIR LA INFORMACIÓN QUE DESEA REALIZAR.</li>
+                                <li class="list-group-item">2.VERIFIQUE INFORMACIÓN.</li> 
+                                <li class="list-group-item">3.BUSQUE POR DOCENTE PARA VERIFICAR ESTADO.</li>
+                                <li class="list-group-item">4.PUEDE GUARDAR DESDE OPCION PDF.</li> 
+                            </ul>
+                        </div>
+                        <div class="col-md-5">
+                            <p:button  outcome="seguimientoSilaboDR.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block" value="VER ESTADO DE SILABO DEL DOCENTE"/>
+<!--                            <p:button disabled="true"  outcome="validarSilabo.xhtml?faces-redirect=true" styleClass="btn btn-default btn-block " value="APROBAR SILABOS"/>      -->
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

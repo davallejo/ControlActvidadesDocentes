@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AsignaturasCreateDlg" widgetVar="AsignaturasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAsignaturasTitle}">
+            <h:form id="AsignaturasCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{asignaturasController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{asignaturasController.selected.nombre}" title="#{bundle.CreateAsignaturasTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_codigo}" for="codigo" />
+                        <p:inputText id="codigo" value="#{asignaturasController.selected.codigo}" title="#{bundle.CreateAsignaturasTitle_codigo}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_creditos}" for="creditos" />
+                        <p:inputText id="creditos" value="#{asignaturasController.selected.creditos}" title="#{bundle.CreateAsignaturasTitle_creditos}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_unidadCurricular}" for="unidadCurricular" />
+                        <p:inputText id="unidadCurricular" value="#{asignaturasController.selected.unidadCurricular}" title="#{bundle.CreateAsignaturasTitle_unidadCurricular}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_tipoAsignatura}" for="tipoAsignatura" />
+                        <p:inputText id="tipoAsignatura" value="#{asignaturasController.selected.tipoAsignatura}" title="#{bundle.CreateAsignaturasTitle_tipoAsignatura}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{asignaturasController.selected.descripcion}" title="#{bundle.CreateAsignaturasTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_objetivoGeneral}" for="objetivoGeneral" />
+                        <p:inputText id="objetivoGeneral" value="#{asignaturasController.selected.objetivoGeneral}" title="#{bundle.CreateAsignaturasTitle_objetivoGeneral}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_objetivosEspecificos}" for="objetivosEspecificos" />
+                        <p:inputText id="objetivosEspecificos" value="#{asignaturasController.selected.objetivosEspecificos}" title="#{bundle.CreateAsignaturasTitle_objetivosEspecificos}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_contribucionFormacionProf}" for="contribucionFormacionProf" />
+                        <p:inputText id="contribucionFormacionProf" value="#{asignaturasController.selected.contribucionFormacionProf}" title="#{bundle.CreateAsignaturasTitle_contribucionFormacionProf}" />
+                        <p:outputLabel value="#{bundle.CreateAsignaturasLabel_resultadosAprendizaje}" for="resultadosAprendizaje" />
+                        <p:inputText id="resultadosAprendizaje" value="#{asignaturasController.selected.resultadosAprendizaje}" title="#{bundle.CreateAsignaturasTitle_resultadosAprendizaje}" />
+                        
+                        <p:outputLabel value="Area" for="codArea" />
+                        <p:selectOneMenu id="codArea" value="#{asignaturasController.selected.codArea}" required="true" requiredMessage="#{bundle.EditAsignaturasRequiredMessage_codArea}">
+                            <f:selectItems value="#{areaAcademicaController.itemsAvailableSelectOne}"
+                                           var="codAreaItem"
+                                           itemValue="#{codAreaItem}"
+                                           itemLabel="#{codAreaItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Carrera" for="codCarrera" />
+                        <p:selectOneMenu id="codCarrera" value="#{asignaturasController.selected.codCarrera}" required="true" requiredMessage="#{bundle.EditAsignaturasRequiredMessage_codCarrera}">
+                            <f:selectItems value="#{carrerasController.itemsAvailableSelectOne}"
+                                           var="codCarreraItem"
+                                           itemValue="#{codCarreraItem}"
+                                           itemLabel="#{codCarreraItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Semestre" for="codSemestre" />
+                        <p:selectOneMenu id="codSemestre" value="#{asignaturasController.selected.codSemestre}" required="true" requiredMessage="#{bundle.EditAsignaturasRequiredMessage_codSemestre}">
+                            <f:selectItems value="#{semestreController.itemsAvailableSelectOne}"
+                                           var="codSemestreItem"
+                                           itemValue="#{codSemestreItem}"
+                                           itemLabel="#{codSemestreItem.nombre}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{asignaturasController.create}" value="#{bundle.Save}" update="display,:AsignaturasListForm:datalist,:growl" oncomplete="handleSubmit(args,'AsignaturasCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('AsignaturasCreateDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

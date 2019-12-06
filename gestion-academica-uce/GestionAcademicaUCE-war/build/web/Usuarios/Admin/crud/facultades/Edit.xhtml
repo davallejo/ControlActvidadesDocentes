@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FacultadesEditDlg" widgetVar="FacultadesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFacultadesTitle}">
+            <h:form id="FacultadesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{facultadesController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.EditFacultadesLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{facultadesController.selected.nombre}" title="#{bundle.EditFacultadesTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditFacultadesLabel_mision}" for="mision" />
+                        <p:inputText id="mision" value="#{facultadesController.selected.mision}" title="#{bundle.EditFacultadesTitle_mision}" />
+                        <p:outputLabel value="#{bundle.EditFacultadesLabel_vision}" for="vision" />
+                        <p:inputText id="vision" value="#{facultadesController.selected.vision}" title="#{bundle.EditFacultadesTitle_vision}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{facultadesController.update}" value="#{bundle.Save}" update="display,:FacultadesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FacultadesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('FacultadesEditDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

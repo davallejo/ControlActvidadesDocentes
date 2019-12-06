@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <body>
+
+        <ui:composition template="/Plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <div class="marco">
+                    <!--                    <h:form>
+                                            <h5>USUARIO:  <h:outputLabel value="#{login.usuario.apellidoP} #{login.usuario.nombreP}"/></h5>
+                                        </h:form>-->
+
+                    <h4>SOLICITE EL REPORTE AL COORDINADOR DE ASIGNATURA</h4>
+                    <h:form>
+                                                <h3>COORDINADOR:</h3>
+                                                <p:dataTable class="row text-center text-uppercase" draggableColumns="true" style="margin-bottom:50px" value="#{login.usuario}" var="items" >
+                                                        <tbody>   
+                                                        <p:column>
+                                                            <f:facet name="header" class="col-md-12">NOMBRES</f:facet>#{login.usuario.nombreP}
+                                                        </p:column>
+                                                        <p:column>
+                                                            <f:facet name="header" class="col-md-12">APELLIDOS</f:facet>#{login.usuario.apellidoP}
+                                                        </p:column>    
+                                                        <p:column>
+                                                            <f:facet name="header">ÁREA</f:facet>#{coordinadoresAreaLista.ca.nombre}
+                                                        </p:column>
+                                                    </tbody>
+                                                </p:dataTable>
+
+<!--                        <p:fieldset legend="COORDINADOR:" style="margin-bottom:20px">-->
+                            
+<!--<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <p:panelGrid columns="6">
+                    <h5> NOMBRES: </h5> <h:outputLabel value="#{login.usuario.nombreP}"/>
+                    <h5> APELLIDOS: </h5> <h:outputLabel value="#{login.usuario.apellidoP}"/>
+                    <h5> ÁREA: </h5> <h:outputLabel value="#"/>
+                </p:panelGrid>
+            </div>
+        </div>
+    </div>
+</div>                         -->
+<!--                        </p:fieldset>-->
+                    </h:form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h:form style="margin-top: 30px">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p:panelGrid columns="4">
+                                                    <p:outputLabel value = "ASIGNATURA: " for="txtAsignatura" />
+                                                    <p:selectOneMenu value="#{coordinadorAreaBacking.coordinadorArea.codArea}"
+                                                                     id="txtAsignatura"
+                                                                     required="true">
+                                                        <f:selectItem itemLabel="SELECCIONE UNO" itemValue="" />
+                                                        <f:selectItems value="#{asignaturaLista.listarAsignaturas()}" var="asignatura"
+                                                                       itemLabel="#{asignatura.nombre}" itemValue="#{asignatura.id}" />
+                                                    </p:selectOneMenu>
+                                                </p:panelGrid>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <p:commandButton style="margin-top: 15px" styleClass="btn btn-info btn-block"  actionListener="#{coordinadorAreaBacking.guardar(actionEvent)}"  value="ENVIAR SOLICITUD"/>
+
+                            </h:form>
+
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 70px">
+                        <div class="col-md-4">
+                            <h:button outcome="registros_semestre_idc" value="LIMPIAR" class="btn btn-block btn-default" />
+                        </div>
+                        <div class="col-md-4">
+                            <h:commandButton value="SALIR DEL SISTEMA" onclick="window.history.back();" class="btn btn-block btn-danger" />
+                        </div>
+
+                    </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CursosEditDlg" widgetVar="CursosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCursosTitle}">
+            <h:form id="CursosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{seguimientoSilabos.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.EditCursosLabel_nomenclatura}" for="nomenclatura" />
+                        <p:inputText id="nomenclatura" value="#{seguimientoSilabos.selected.nomenclatura}" title="#{bundle.EditCursosTitle_nomenclatura}" />
+                        
+                        <p:outputLabel value="Asignatura" for="codAsignatura" />
+                        <p:selectOneMenu id="codAsignatura" value="#{seguimientoSilabos.selected.codAsignatura}" required="true" requiredMessage="#{bundle.EditCursosRequiredMessage_codAsignatura}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{asignaturasController.itemsAvailableSelectOne}"
+                                           var="codAsignaturaItem"
+                                           itemValue="#{codAsignaturaItem}"
+                                           itemLabel="#{codAsignaturaItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Paralelo" for="codParalelo" />
+                        <p:selectOneMenu id="codParalelo" value="#{seguimientoSilabos.selected.codParalelo}" required="true" requiredMessage="#{bundle.EditCursosRequiredMessage_codParalelo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{paraleloController.itemsAvailableSelectOne}"
+                                           var="codParaleloItem"
+                                           itemValue="#{codParaleloItem}"
+                                           itemLabel="#{codParaleloItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Periodo" for="codPeriodo" />
+                        <p:selectOneMenu id="codPeriodo" value="#{seguimientoSilabos.selected.codPeriodo}" required="true" requiredMessage="#{bundle.EditCursosRequiredMessage_codPeriodo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{periodoController.itemsAvailableSelectOne}"
+                                           var="codPeriodoItem"
+                                           itemValue="#{codPeriodoItem}"
+                                           itemLabel="#{codPeriodoItem.nombre}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Docente" for="codDocente" />
+                        <p:selectOneMenu id="codDocente" value="#{seguimientoSilabos.selected.codDocente}" required="true" requiredMessage="#{bundle.EditCursosRequiredMessage_codDocente}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{seguimientoSilabos.docentes}"
+                                           var="codDocenteItem"
+                                           itemValue="#{codDocenteItem}"
+                                           itemLabel="#{codDocenteItem.nombreP} #{codDocenteItem.apellidoP}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Estudiante" for="codEstudiante" />
+                        <p:selectOneMenu id="codEstudiante" value="#{seguimientoSilabos.selected.codEstudiante}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{seguimientoSilabos.estudiantes}"
+                                           var="codEstudianteItem"
+                                           itemValue="#{codEstudianteItem}"
+                                           itemLabel="#{codEstudianteItem.nombreP} #{codEstudianteItem.apellidoP}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{seguimientoSilabos.update}" value="#{bundle.Save}" update="display,:CursosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CursosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('CursosEditDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

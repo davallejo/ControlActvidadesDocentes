@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CarrerasEditDlg" widgetVar="CarrerasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCarrerasTitle}">
+            <h:form id="CarrerasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{carrerasController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.EditCarrerasLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{carrerasController.selected.nombre}" title="#{bundle.EditCarrerasTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditCarrerasLabel_mision}" for="mision" />
+                        <p:inputText id="mision" value="#{carrerasController.selected.mision}" title="#{bundle.EditCarrerasTitle_mision}" />
+                        <p:outputLabel value="#{bundle.EditCarrerasLabel_vision}" for="vision" />
+                        <p:inputText id="vision" value="#{carrerasController.selected.vision}" title="#{bundle.EditCarrerasTitle_vision}" />
+                        <p:outputLabel value="#{bundle.EditCarrerasLabel_perfilEgreso}" for="perfilEgreso" />
+                        <p:inputText id="perfilEgreso" value="#{carrerasController.selected.perfilEgreso}" title="#{bundle.EditCarrerasTitle_perfilEgreso}" />
+                        <p:outputLabel value="Facultad" for="codFacultad" />
+                        <p:selectOneMenu id="codFacultad" value="#{carrerasController.selected.codFacultad}" required="true" requiredMessage="#{bundle.EditCarrerasRequiredMessage_codFacultad}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{facultadesController.itemsAvailableSelectOne}"
+                                           var="codFacultadItem"
+                                           itemValue="#{codFacultadItem}"
+                                           itemLabel="#{codFacultadItem.nombre}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{carrerasController.update}" value="#{bundle.Save}" update="display,:CarrerasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CarrerasEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('CarrerasEditDialog').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

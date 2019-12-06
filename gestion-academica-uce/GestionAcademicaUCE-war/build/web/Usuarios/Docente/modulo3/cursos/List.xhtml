@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/Plantillas/plantilla.xhtml">
+
+
+        <!--        <ui:define name="title">
+                    <h:outputText value="#{bundle.ListCursosTitle}"></h:outputText>
+                </ui:define>-->
+
+        <ui:define name="content">
+
+            <div class="marco">
+                <div class="row">
+                    <h1>DETALLE DE CURSOS DEL DOCENTE</h1>
+
+                    <p:growl id="growl" life="3000" />
+
+                    <h:form id="CursosListForm">
+                        <p:panel header="Listado de Cursos">
+                            <p:dataTable id="datalist" value="#{seguimientoSilabos.cursosDocente}" var="item" widgetVar="cursosTabla"
+                                         selectionMode="single" selection="#{seguimientoSilabos.selected}"
+                                         paginator="true"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         >
+
+<!--                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Buscar por Criterio:" />
+                                        <p:inputText id="globalFilter" onkeyup="PF('cursosTabla').filter()" style="width:150px" placeholder="Enter keyword"/>
+                                    </p:outputPanel>
+                                </f:facet>-->
+
+                                <p:ajax event="rowSelect"   update="editButton"/>
+                                <p:ajax event="rowUnselect" update="editButton"/>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListCursosTitle_nomenclatura}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nomenclatura}"/>
+                                </p:column>
+                                
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Asignatura"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.codAsignatura.nombre}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Paralelo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.codParalelo.nombre}"/>
+                                </p:column>
+                                
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Estudiante Presi"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.codEstudiante.nombreP} #{item.codEstudiante.apellidoP}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Periodo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.codPeriodo.nombre}"/>
+                                </p:column>
+
+                                <f:facet name="footer">
+
+                                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CursosEditForm" oncomplete="PF('CursosEditDialog').show()" disabled="#{empty seguimientoSilabos.selected}"/>
+
+                                </f:facet>
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </div>
+
+            <ui:include src="Edit.xhtml"/>
+
+        </ui:define>
+    </ui:composition>
+
+</html>
